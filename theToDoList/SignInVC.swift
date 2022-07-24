@@ -130,10 +130,9 @@ class SignInVC: UIViewController {
     
     @objc func toSignUpVC() {
         print("Go to SignUp view controller")
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SingUpVC") as! SingUpVC
+        let vc = SingUpVC()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc,animated: true, completion: nil)
     }
-
 }
 
