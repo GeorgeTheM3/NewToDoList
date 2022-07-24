@@ -49,14 +49,12 @@ class SingUpVC: UIViewController {
     
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
         button.backgroundColor = UIColor(red: 0.98, green: 0.91, blue: 0.91, alpha: 1)
         button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
-//        button.addTarget(self, action: #selector(toSignUpVC), for: .touchUpInside)
         return button
     }()
     
