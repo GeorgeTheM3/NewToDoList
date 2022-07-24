@@ -78,7 +78,7 @@ class SingUpVC: UIViewController {
         setupConstraints()
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         nameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 34).isActive = true
         nameLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -515).isActive = true
