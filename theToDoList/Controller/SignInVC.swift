@@ -16,14 +16,18 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        signInView.signUpButtonTarget(self, action: #selector(goToSignUpView))
     }
     
     override func loadView() {
         super.loadView()
-        self.view = signInView
+        self.view = SignInView()
     }
     
-    required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
+    @objc func goToSignUpView() {
+        let view = SignUpVC()
+        view.modalPresentationStyle = .fullScreen
+        present(view, animated: true)
         }
+    
 }
