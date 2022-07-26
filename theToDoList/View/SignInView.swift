@@ -60,7 +60,7 @@ class SignInView: UIView {
     private lazy var forgetPasswordButton: UIButton = {
         let button = UIButton()
         button.setTitle("Forget password", for: .normal)
-        button.setTitleColor(UIColor(red: 0.33, green: 0.56, blue: 0.83, alpha: 1), for: .normal)
+        button.setTitleColor(.orange, for: .normal)
         button.titleLabel?.font = UIFont(name: "Al Nile", size: 12)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -156,13 +156,13 @@ class SignInView: UIView {
     private func signInButtonConstraints() {
         self.signInButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
         self.signInButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -80).isActive = true
-        self.signInButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -80).isActive = true
+        self.signInButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
         self.signInButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 80).isActive = true
     }
     
     private func backgroundImageConstarints() {
-        self.backgroundImage.heightAnchor.constraint(equalTo: self.heightAnchor, constant: 1700).isActive = true
-        self.backgroundImage.widthAnchor.constraint(equalTo: self.widthAnchor, constant: 900).isActive = true
+        self.backgroundImage.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        self.backgroundImage.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
     }
     
     func setViews() {
@@ -178,6 +178,10 @@ class SignInView: UIView {
     
     func signUpButtonTarget(_ target: Any?, action: Selector) {
         signUpButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func signInButtonTarget(_ target: Any?, action: Selector) {
+        signInButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }
 

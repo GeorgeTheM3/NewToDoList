@@ -82,7 +82,6 @@ class SignUpView: UIView {
         textFieldPasswordConstraints()
         signUpButtonConstraints()
         arrowButtonConstraints()
-
     }
     
     required init?(coder Decoder: NSCoder) {
@@ -95,7 +94,6 @@ class SignUpView: UIView {
         textFieldPasswordConstraints()
         signUpButtonConstraints()
         arrowButtonConstraints()
-        
     }
 
     private func nameLabelConstraints() {
@@ -129,7 +127,7 @@ class SignUpView: UIView {
     private func signUpButtonConstraints() {
         self.signUpButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
         self.signUpButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -80).isActive = true
-        self.signUpButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -80).isActive = true
+        self.signUpButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
         self.signUpButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 80).isActive = true
     }
     
@@ -139,9 +137,10 @@ class SignUpView: UIView {
     }
     
     private func backgroundImageConstarints() {
-        self.backgroundImage.heightAnchor.constraint(equalTo: self.heightAnchor, constant: 1700).isActive = true
-        self.backgroundImage.widthAnchor.constraint(equalTo: self.widthAnchor, constant: 900).isActive = true
+        self.backgroundImage.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        self.backgroundImage.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
     }
+    
     func setViews() {
         self.addSubview(self.backgroundImage)
         self.addSubview(self.signUpButton)

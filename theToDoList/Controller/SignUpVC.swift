@@ -23,7 +23,7 @@ class SignUpVC: UIViewController {
         self.view = SignUpView()
     }
     
-    @objc func goBack() {
+    @objc private func goBack() {
         dismiss(animated: true)
     }
 }

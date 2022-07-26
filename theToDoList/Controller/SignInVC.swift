@@ -17,6 +17,7 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         signInView.signUpButtonTarget(self, action: #selector(goToSignUpView))
+        signInView.signInButtonTarget(self, action: #selector(goToTasks))
     }
     
     override func loadView() {
@@ -24,8 +25,14 @@ class SignInVC: UIViewController {
         self.view = SignInView()
     }
     
-    @objc func goToSignUpView() {
+    @objc private func goToSignUpView() {
         let view = SignUpVC()
+        view.modalPresentationStyle = .fullScreen
+        present(view, animated: true)
+        }
+    
+    @objc private func goToTasks() {
+        let view = TasksVC()
         view.modalPresentationStyle = .fullScreen
         present(view, animated: true)
         }
