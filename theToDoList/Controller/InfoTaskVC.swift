@@ -34,6 +34,7 @@ class InfoTaskVC: UIViewController {
     }
     
     @objc private func deleteToTasksView() {
+        tasksArray.removeTask(title: infoTaskView.titleLabel.text!)
         dismiss(animated: true)
     }
 }

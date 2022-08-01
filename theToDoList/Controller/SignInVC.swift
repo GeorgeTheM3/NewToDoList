@@ -23,6 +23,8 @@ class SignInVC: UIViewController {
     override func loadView() {
         super.loadView()
         self.view = SignInView()
+        addExampleTasks()
+        print(tasksArray.arrayTasks)
     }
     
     @objc private func goToSignUpView() {
@@ -36,5 +38,4 @@ class SignInVC: UIViewController {
         view.modalPresentationStyle = .fullScreen
         present(view, animated: true)
         }
-    
 }

@@ -30,7 +30,7 @@ class TasksView: UIView {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: "Ready", at: 0, animated: true)
         sc.insertSegment(withTitle: "In progress", at: 1, animated: true)
-        sc.selectedSegmentIndex = 0
+        sc.selectedSegmentIndex = 1
         // i dont know what is this below but its work
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
@@ -40,6 +40,7 @@ class TasksView: UIView {
     lazy var tableViewTasks: UITableView = {
         let tv = UITableView()
         tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tv.backgroundColor = UIColor(white: 1, alpha: 0.2)
         return tv
     }()
     
