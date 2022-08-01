@@ -22,11 +22,15 @@ class AddTaskVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addTaskView.backButton(self, action: #selector(toTaskView))
+        addTaskView.plusButton(self, action: #selector(toTaskViewWithData))
     }
     
     @objc private func toTaskView() {
         dismiss(animated: true)
     }
     
+    @objc private func toTaskViewWithData() {
+        dismiss(animated: true)
+    }
 }
 

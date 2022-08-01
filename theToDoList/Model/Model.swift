@@ -7,14 +7,11 @@
 
 import Foundation
 
-var dictionary: [String: String] = [:]
+class Tasks {
+    var arrayTasks: [Task] = []
 
-class User {
-    var login: String
-    var password: String
-    
-    init(login: String, passwod: String){
-        self.login = login
-        self.password = passwod
+    func appendNewTask(title: String, description: String?){
+        let task = Task(title: title, description: description ?? "No description")
+        arrayTasks.append(task)
     }
 }

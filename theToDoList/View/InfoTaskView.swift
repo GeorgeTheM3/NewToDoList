@@ -22,7 +22,7 @@ class InfoTaskView: UIView {
         return button
     }()
     
-    private lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Some task title"
         label.textColor = .white
@@ -30,7 +30,7 @@ class InfoTaskView: UIView {
         return label
     }()
     
-    private lazy var descriptionView: UITextView = {
+    lazy var descriptionView: UITextView = {
         let tv = UITextView()
         tv.text = "A lot of words and something else bla bla bla"
         tv.isEditable = false
@@ -119,5 +119,10 @@ class InfoTaskView: UIView {
     
     func deleteButton(_ target: Any?, action: Selector) {
         deleteButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func setViewWithContent(title: String, description: String?) {
+        titleLabel.text = title
+        descriptionView.text = description
     }
 }

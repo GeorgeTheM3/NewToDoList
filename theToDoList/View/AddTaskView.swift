@@ -40,7 +40,7 @@ class AddTaskView: UIView {
         return password
     }()
     
-    private lazy var textfieldTitle: UITextField = {
+    lazy var textfieldTitle: UITextField = {
         let tf = UITextField()
         tf.layer.cornerRadius = 5
         tf.layer.borderWidth = 1
@@ -48,7 +48,7 @@ class AddTaskView: UIView {
         return tf
     }()
     
-    private lazy var textfieldDescription: UITextView = {
+    lazy var textfieldDescription: UITextView = {
         let tf = UITextView()
         tf.layer.cornerRadius = 5
         tf.layer.borderWidth = 1
@@ -165,5 +165,9 @@ class AddTaskView: UIView {
     
     func backButton(_ target: Any?, action: Selector) {
         arrowButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func plusButton(_ target: Any?, action: Selector) {
+        plusButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }

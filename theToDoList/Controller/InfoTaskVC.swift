@@ -10,7 +10,7 @@ import UIKit
 
 class InfoTaskVC: UIViewController {
     
-    private var infoTaskView: InfoTaskView {
+    var infoTaskView: InfoTaskView {
         return self.view as! InfoTaskView
     }
     
@@ -23,6 +23,10 @@ class InfoTaskVC: UIViewController {
         super.viewDidLoad()
         infoTaskView.backButton(self, action: #selector(toTasksView))
         infoTaskView.deleteButton(self, action: #selector(deleteToTasksView))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     @objc private func toTasksView() {

@@ -20,16 +20,6 @@ class TasksView: UIView {
         return button
     }()
     
-    private lazy var addButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("to info about task", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 15)
-        return button
-    }()
-    
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "fon")
@@ -47,8 +37,9 @@ class TasksView: UIView {
         return sc
     }()
     
-    private lazy var tableViewTasks: UITableView = {
+    lazy var tableViewTasks: UITableView = {
         let tv = UITableView()
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tv
     }()
     
@@ -59,7 +50,6 @@ class TasksView: UIView {
         segmentedControlConstraints()
         tableViewTasksConstraints()
         addTaskButtonConstraints()
-        addButtonConstraints()
     }
     
     required init?(coder Decoder: NSCoder) {
@@ -69,23 +59,12 @@ class TasksView: UIView {
         segmentedControlConstraints()
         tableViewTasksConstraints()
         addTaskButtonConstraints()
-        addButtonConstraints()
     }
     
     
     private func addTaskButtonConstraints() {
         addTaskButton.snp.makeConstraints { make in
             make.bottom.equalTo(-65)
-            make.leading.equalTo(80)
-            make.trailing.equalTo(-81)
-            make.height.equalTo(55)
-        }
-    }
-    
-    // just for test info task view
-    private func addButtonConstraints() {
-        addButton.snp.makeConstraints { make in
-            make.bottom.equalTo(-165)
             make.leading.equalTo(80)
             make.trailing.equalTo(-81)
             make.height.equalTo(55)
@@ -106,6 +85,7 @@ class TasksView: UIView {
             make.top.equalTo(133)
             make.width.equalTo(self.safeAreaLayoutGuide)
             make.height.equalTo(400)
+            make.bottom.equalTo(-165)
         }
     }
     
@@ -123,18 +103,12 @@ class TasksView: UIView {
         self.addSubview(addTaskButton)
         self.addSubview(segmentedControl)
         self.addSubview(tableViewTasks)
-        self.addSubview(addButton)
     }
     
     func toAddTaskView(_ target: Any?, action: Selector) {
         addTaskButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
-    func toInfoButton(_ target: Any?, action: Selector) {
-        addButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
 }
-
 
 
