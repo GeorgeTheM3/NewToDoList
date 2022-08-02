@@ -22,6 +22,12 @@ class InfoTaskView: UIView {
         return button
     }()
     
+    private lazy var doneButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "done"), for: .normal)
+        return button
+    }()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Some task title"
@@ -40,7 +46,6 @@ class InfoTaskView: UIView {
     private lazy var backgroundImage: UIImageView = {
         let bg = UIImageView()
         bg.image = UIImage(named: "fon")
-        bg.translatesAutoresizingMaskIntoConstraints = false
         return bg
     }()
     
@@ -52,6 +57,7 @@ class InfoTaskView: UIView {
         backgroundImageConstarints()
         arrowButtonConstraints()
         deleteButtonConstraints()
+        doneButtonConstraints()
     }
     
     required init?(coder Decoder: NSCoder) {
@@ -62,6 +68,7 @@ class InfoTaskView: UIView {
         backgroundImageConstarints()
         arrowButtonConstraints()
         deleteButtonConstraints()
+        doneButtonConstraints()
     }
     
     private func arrowButtonConstraints() {
@@ -75,6 +82,13 @@ class InfoTaskView: UIView {
         deleteButton.snp.makeConstraints { make in
             make.top.equalTo(80)
             make.trailing.equalTo(-60)
+        }
+    }
+    
+    private func doneButtonConstraints() {
+        doneButton.snp.makeConstraints { make in
+            make.top.equalTo(80)
+            make.trailing.equalTo(-120)
         }
     }
     
@@ -111,6 +125,7 @@ class InfoTaskView: UIView {
         self.addSubview(descriptionView)
         self.addSubview(arrowButton)
         self.addSubview(deleteButton)
+        self.addSubview(doneButton)
     }
     
     func backButton(_ target: Any?, action: Selector) {
@@ -119,6 +134,10 @@ class InfoTaskView: UIView {
     
     func deleteButton(_ target: Any?, action: Selector) {
         deleteButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func doneButton(_ target: Any?, action: Selector) {
+        doneButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
     func setViewWithContent(title: String, description: String?) {

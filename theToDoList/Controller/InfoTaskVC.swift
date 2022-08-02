@@ -10,6 +10,8 @@ import UIKit
 
 class InfoTaskVC: UIViewController {
     
+    lazy var indexOfTask: Int = 0
+    
     var infoTaskView: InfoTaskView {
         return self.view as! InfoTaskView
     }
@@ -23,6 +25,7 @@ class InfoTaskVC: UIViewController {
         super.viewDidLoad()
         infoTaskView.backButton(self, action: #selector(toTasksView))
         infoTaskView.deleteButton(self, action: #selector(deleteToTasksView))
+        infoTaskView.doneButton(self, action: #selector(doneTasksButton))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +38,12 @@ class InfoTaskVC: UIViewController {
     
     @objc private func deleteToTasksView() {
         tasksArray.removeTask(title: infoTaskView.titleLabel.text!)
+        dismiss(animated: true)
+    }
+    
+    @objc private func doneTasksButton() {
+        print("ddd")
+        tasksArray.arrayTasks[indexOfTask].changeStatus()
         dismiss(animated: true)
     }
 }
