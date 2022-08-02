@@ -26,7 +26,7 @@ class TasksView: UIView {
         return image
     }()
     
-    private lazy var segmentedControl: UISegmentedControl = {
+    lazy var segmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: "Ready", at: 0, animated: true)
         sc.insertSegment(withTitle: "In progress", at: 1, animated: true)
@@ -108,6 +108,10 @@ class TasksView: UIView {
     
     func toAddTaskView(_ target: Any?, action: Selector) {
         addTaskButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func segmentedCont(_ target: Any?, action: Selector) {
+        segmentedControl.addTarget(target, action: action, for: .valueChanged)
     }
     
 }

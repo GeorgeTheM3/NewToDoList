@@ -17,8 +17,14 @@ class Tasks {
     }
     
     func removeTask(title: String) {
-        arrayTasks.removeAll(where: {$0.title == title})
+        if arrayTasks.contains(where: {$0.title == title}) {
+            arrayTasks.removeAll(where: {$0.title == title})
+        } else {
+            readyTasks.removeAll(where: {$0.title == title})
+        }
     }
 }
+
+
 
 
