@@ -92,19 +92,19 @@ extension TasksVC: UITableViewDataSource {
             tasksArray.getReadyTasks()
             self.tasksView.tableViewTasks.reloadData()
         }
-        action.backgroundColor = .green
+        action.backgroundColor = .lightText
         action.image = UIImage(named: "done")
         return action
     }
     
     func inProgressAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "InProgress") { (action, view, complition) in
+        let action = UIContextualAction(style: .destructive, title: "In Progress") { (action, view, complition) in
             tasksArray.readyTasks[indexPath.row].changeStatusFalse()
             tasksArray.getInProgressTasks()
             self.tasksView.tableViewTasks.reloadData()
         }
-        action.backgroundColor = .red
-        action.image = UIImage(named: "close-1")
+        action.backgroundColor = .orange
+        action.image = UIImage(named: "forwardArrow")
         return action
     }
     
