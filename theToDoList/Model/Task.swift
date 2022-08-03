@@ -15,4 +15,9 @@ struct Task {
     mutating func changeStatus() {
         status = true
     }
+    
+    mutating func changeStatusFalse() {
+        status = false
+    }
+    
 }

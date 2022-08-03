@@ -13,12 +13,3 @@ func addExampleTasks(){
     tasksArray.appendNewTask(title: "Go to gym", description: "Make yourself some stronger")
     tasksArray.appendNewTask(title: "Drink protein", description: "Much better than vodka actualy")
 }
-
-func getArrays(){
-    for task in tasksArray.arrayTasks {
-        if task.status {
-            tasksArray.readyTasks.append(task)
-            tasksArray.arrayTasks.removeAll(where: {$0.title == task.title })
-        }
-    }
-}

@@ -42,7 +42,6 @@ class InfoTaskVC: UIViewController {
     }
     
     @objc private func doneTasksButton() {
-        print("ddd")
         tasksArray.arrayTasks[indexOfTask].changeStatus()
         dismiss(animated: true)
     }

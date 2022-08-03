@@ -23,6 +23,24 @@ class Tasks {
             readyTasks.removeAll(where: {$0.title == title})
         }
     }
+    
+    func getReadyTasks(){
+        for task in arrayTasks {
+            if task.status {
+                readyTasks.append(task)
+                arrayTasks.removeAll(where: {$0.title == task.title })
+            }
+        }
+    }
+    
+    func getInProgressTasks(){
+        for task in readyTasks {
+            if !task.status {
+                arrayTasks.append(task)
+                readyTasks.removeAll(where: {$0.title == task.title })
+            }
+        }
+    }
 }
 
 
