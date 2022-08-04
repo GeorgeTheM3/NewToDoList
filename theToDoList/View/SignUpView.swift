@@ -49,6 +49,7 @@ class SignUpView: UIView {
     
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
+//        button.isEnabled = false
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
@@ -154,5 +155,23 @@ class SignUpView: UIView {
     
     func backButtonTarget(_ target: Any?, action: Selector) {
         arrowButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func signUpButtonTarget(_ target: Any?, action: Selector) {
+        signUpButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func getName() -> String {
+        guard let text = textFieldName.text else { return ""}
+        return text
+    }
+    
+    func getPassword() -> String {
+        guard let text = textFieldPassword.text else { return ""}
+        return text
+    }
+    
+    func switchSignUpButton(){
+        signUpButton.isEnabled = !signUpButton.isEnabled
     }
 }

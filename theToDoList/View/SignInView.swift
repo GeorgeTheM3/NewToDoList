@@ -77,6 +77,17 @@ class SignInView: UIView {
         return button
     }()
     
+    private lazy var incorectUserLable: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.text = "Incorect username or password"
+        label.textColor = .orange
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        label.font = UIFont(name: "AlNile-bold" , size: 15)
+        return label
+    }()
+    
     private lazy var backgroundImage: UIImageView = {
         let bg = UIImageView()
         bg.image = UIImage(named: "fon")
@@ -95,6 +106,7 @@ class SignInView: UIView {
         signUpButtonConstraints()
         forgetPasswordButtonConstraints()
         signInButtonConstraints()
+        incorectUserLableConstraints()
     }
     
     required init?(coder Decoder: NSCoder) {
@@ -108,7 +120,7 @@ class SignInView: UIView {
         signUpButtonConstraints()
         forgetPasswordButtonConstraints()
         signInButtonConstraints()
-        
+        incorectUserLableConstraints()
     }
 
     private func nameLabelConstraints() {
@@ -160,12 +172,18 @@ class SignInView: UIView {
         self.signInButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 80).isActive = true
     }
     
+    private func incorectUserLableConstraints() {
+        self.incorectUserLable.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        self.incorectUserLable.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -565).isActive = true
+        self.incorectUserLable.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 75).isActive = true
+    }
+    
     private func backgroundImageConstarints() {
         self.backgroundImage.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         self.backgroundImage.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
     }
     
-    func setViews() {
+    private func setViews() {
         self.addSubview(self.backgroundImage)
         self.addSubview(self.signInButton)
         self.addSubview(self.nameLabel)
@@ -174,6 +192,7 @@ class SignInView: UIView {
         self.addSubview(self.textFieldPassword)
         self.addSubview(self.signUpButton)
         self.addSubview(self.forgetPasswordButton)
+        self.addSubview(self.incorectUserLable)
     }
     
     func signUpButtonTarget(_ target: Any?, action: Selector) {
@@ -182,6 +201,20 @@ class SignInView: UIView {
     
     func signInButtonTarget(_ target: Any?, action: Selector) {
         signInButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func getName() -> String {
+        guard let text = textFieldName.text else { return "password is empty"}
+        return text
+    }
+    
+    func getPassword() -> String {
+        guard let text = textFieldPassword.text else { return "password is empty"}
+        return text
+    }
+    
+    func incorectLabel() {
+        incorectUserLable.isHidden = !incorectUserLable.isHidden
     }
 }
 

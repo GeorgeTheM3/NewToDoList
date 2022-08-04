@@ -119,7 +119,7 @@ class InfoTaskView: UIView {
         }
     }
     
-    private func setViews() {
+     private func setViews() {
         self.addSubview(backgroundImage)
         self.addSubview(titleLabel)
         self.addSubview(descriptionView)
@@ -143,5 +143,9 @@ class InfoTaskView: UIView {
     func setViewWithContent(title: String, description: String?) {
         titleLabel.text = title
         descriptionView.text = description
+    }
+    
+    func turnOffButton() {
+        doneButton.isEnabled = false
     }
 }

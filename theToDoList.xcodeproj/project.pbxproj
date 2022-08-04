@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E06B07B289C0F97003C20DD /* Model Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06B07A289C0F97003C20DD /* Model Users.swift */; };
+		5E06B07D289C0FA9003C20DD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06B07C289C0FA9003C20DD /* User.swift */; };
 		5E97B1B9288D3E8B00940720 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E97B1B8288D3E8B00940720 /* SignUpVC.swift */; };
 		5E9C0F24288FF73900381551 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C0F23288FF73900381551 /* TasksView.swift */; };
 		5E9C0F26288FF78500381551 /* TasksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C0F25288FF78500381551 /* TasksVC.swift */; };
@@ -15,7 +17,7 @@
 		5E9C0F2C289028D500381551 /* InfoTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C0F2B289028D500381551 /* InfoTaskView.swift */; };
 		5E9C0F2E289028FE00381551 /* InfoTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C0F2D289028FE00381551 /* InfoTaskVC.swift */; };
 		5E9F102D2897C1F5002ECAD5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9F102C2897C1F5002ECAD5 /* Task.swift */; };
-		5EAAD09C288DBDFF00F0E79A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAAD09B288DBDFF00F0E79A /* Model.swift */; };
+		5EAAD09C288DBDFF00F0E79A /* Model Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAAD09B288DBDFF00F0E79A /* Model Tasks.swift */; };
 		5EAAD09F288DBEA000F0E79A /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAAD09E288DBEA000F0E79A /* LocalStore.swift */; };
 		5EAAD0A1288DC38D00F0E79A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAAD0A0288DC38D00F0E79A /* SignInVC.swift */; };
 		5EABD40C2897FE0F00F80309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EABD40B2897FE0F00F80309 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E06B07A289C0F97003C20DD /* Model Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model Users.swift"; sourceTree = "<group>"; };
+		5E06B07C289C0FA9003C20DD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5E97B1B8288D3E8B00940720 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		5E9C0F23288FF73900381551 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		5E9C0F25288FF78500381551 /* TasksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksVC.swift; sourceTree = "<group>"; };
@@ -37,7 +41,7 @@
 		5E9C0F2B289028D500381551 /* InfoTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTaskView.swift; sourceTree = "<group>"; };
 		5E9C0F2D289028FE00381551 /* InfoTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTaskVC.swift; sourceTree = "<group>"; };
 		5E9F102C2897C1F5002ECAD5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		5EAAD09B288DBDFF00F0E79A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5EAAD09B288DBDFF00F0E79A /* Model Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model Tasks.swift"; sourceTree = "<group>"; };
 		5EAAD09E288DBEA000F0E79A /* LocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStore.swift; sourceTree = "<group>"; };
 		5EAAD0A0288DC38D00F0E79A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		5EABD40B2897FE0F00F80309 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -102,8 +106,10 @@
 		5EAAD09D288DBE8200F0E79A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5EAAD09B288DBDFF00F0E79A /* Model.swift */,
+				5EAAD09B288DBDFF00F0E79A /* Model Tasks.swift */,
 				5E9F102C2897C1F5002ECAD5 /* Task.swift */,
+				5E06B07A289C0F97003C20DD /* Model Users.swift */,
+				5E06B07C289C0FA9003C20DD /* User.swift */,
 				5EAAD09E288DBEA000F0E79A /* LocalStore.swift */,
 			);
 			path = Model;
@@ -277,10 +283,11 @@
 				5E9C0F28289002C400381551 /* AddTaskView.swift in Sources */,
 				5EACAE26288F0C4B00D9E9D7 /* SignUpView.swift in Sources */,
 				5E9C0F24288FF73900381551 /* TasksView.swift in Sources */,
-				5EAAD09C288DBDFF00F0E79A /* Model.swift in Sources */,
+				5EAAD09C288DBDFF00F0E79A /* Model Tasks.swift in Sources */,
 				5E97B1B9288D3E8B00940720 /* SignUpVC.swift in Sources */,
 				5EF39E91288D1E9C0091A777 /* SignInView.swift in Sources */,
 				5EF39E8D288D1E9C0091A777 /* AppDelegate.swift in Sources */,
+				5E06B07D289C0FA9003C20DD /* User.swift in Sources */,
 				5E9F102D2897C1F5002ECAD5 /* Task.swift in Sources */,
 				5E9C0F2C289028D500381551 /* InfoTaskView.swift in Sources */,
 				5E9C0F2A289002E800381551 /* AddTaskVC.swift in Sources */,
@@ -289,6 +296,7 @@
 				5EF39E8F288D1E9C0091A777 /* SceneDelegate.swift in Sources */,
 				5EAAD09F288DBEA000F0E79A /* LocalStore.swift in Sources */,
 				5E9C0F2E289028FE00381551 /* InfoTaskVC.swift in Sources */,
+				5E06B07B289C0F97003C20DD /* Model Users.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +450,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = georgeM3.theToDoList;
+				PRODUCT_BUNDLE_IDENTIFIER = georgeM3.theToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -472,7 +480,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = georgeM3.theToDoList;
+				PRODUCT_BUNDLE_IDENTIFIER = georgeM3.theToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

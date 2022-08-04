@@ -133,6 +133,7 @@ extension TasksVC: UITableViewDelegate {
             let description = tasksArray.readyTasks[indexPath.row].description
             let vc = InfoTaskVC()
             vc.indexOfTask = indexPath.row
+            vc.buttonOff()
             vc.infoTaskView.setViewWithContent(title: title, description: description)
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
@@ -141,8 +142,7 @@ extension TasksVC: UITableViewDelegate {
             let title = tasksArray.arrayTasks[indexPath.row].title
             let description = tasksArray.arrayTasks[indexPath.row].description
             let vc = InfoTaskVC()
-            vc.indexOfTask = indexPath.row
-            vc.infoTaskView.setViewWithContent(title: title, description: description)
+            vc.setInfo(title: title, description: description, index: indexPath.row)
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
             present(vc, animated: true)

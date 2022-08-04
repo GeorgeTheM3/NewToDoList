@@ -13,3 +13,6 @@ func addExampleTasks(){
     tasksArray.appendNewTask(title: "Go to gym", description: "Make yourself some stronger")
     tasksArray.appendNewTask(title: "Drink protein", description: "Much better than vodka actualy")
 }
+
+
+var users = Users()
