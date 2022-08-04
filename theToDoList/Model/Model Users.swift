@@ -17,4 +17,14 @@ class Users {
     func checkUserInMemory(name: String?, password: String?) -> Bool {
         return users.contains(where: {$0.name == name && $0.password == password})
     }
+    
+    func returnPassword(name: String) -> String {
+        var password = ""
+        for user in users {
+            if user.name == name {
+                password = user.password
+            }
+        }
+        return password
+    }
 }

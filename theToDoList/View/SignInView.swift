@@ -173,7 +173,7 @@ class SignInView: UIView {
     }
     
     private func incorectUserLableConstraints() {
-        self.incorectUserLable.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        self.incorectUserLable.heightAnchor.constraint(equalToConstant: 20).isActive = true
         self.incorectUserLable.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -565).isActive = true
         self.incorectUserLable.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 75).isActive = true
     }
@@ -201,6 +201,10 @@ class SignInView: UIView {
     
     func signInButtonTarget(_ target: Any?, action: Selector) {
         signInButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func forgetButtonTarget(_ target: Any?, action: Selector) {
+        forgetPasswordButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
     func getName() -> String {

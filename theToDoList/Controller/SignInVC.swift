@@ -21,6 +21,7 @@ class SignInVC: UIViewController {
         super.viewDidLoad()
         signInView.signUpButtonTarget(self, action: #selector(goToSignUpView))
         signInView.signInButtonTarget(self, action: #selector(checkUser))
+        signInView.forgetButtonTarget(self, action: #selector(forgetPassword))
     }
     
     override func loadView() {
@@ -58,5 +59,21 @@ class SignInVC: UIViewController {
                 self.signInView.incorectLabel()
             }
         }
+    }
+    
+    @objc private func forgetPassword() {
+        let alertController = UIAlertController(title: "Forgot password?", message: "Enter user name", preferredStyle: .alert)
+        alertController.addTextField()
+        let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
+            self.userName = alertController.textFields![0].text
+            guard self.userName != nil else { return }
+            let password = users.returnPassword(name: self.userName!)
+            let ac = UIAlertController(title: "Your password", message: "\(password)", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            ac.addAction(okAction)
+            self.present(ac, animated: true)
+        }
+        alertController.addAction(doneAction)
+        self.present(alertController,animated: true)
     }
 }
