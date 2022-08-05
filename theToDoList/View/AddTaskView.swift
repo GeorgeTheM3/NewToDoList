@@ -66,7 +66,7 @@ class AddTaskView: UIView {
         return tf
     }()
     
-    lazy var textViewDescription: UITextView = {
+    private lazy var textViewDescription: UITextView = {
         let tv = UITextView()
         tv.layer.cornerRadius = 5
         tv.layer.borderWidth = 1
@@ -214,13 +214,25 @@ class AddTaskView: UIView {
         plusButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
+    func returnTitle() -> String {
+//        ???????
+        guard textfieldTitle.text?.isEmpty == false else {return "No title"}
+        return textfieldTitle.text!
+    }
+    
+    func returnDiscription() -> String? {
+        return textViewDescription.text ?? "No description"
+    }
+    
     func returnStartTime() -> String? {
+//        ????
+        guard startTimeTextField.text?.isEmpty == false else {return nil}
         return startTimeTextField.text
     }
     
     func returnDeadLine() -> String? {
+//        вью же не может проверять пустая она или нет?
+        guard deadLineTextField.text?.isEmpty == false else {return nil}
         return deadLineTextField.text
     }
-    
-    
 }

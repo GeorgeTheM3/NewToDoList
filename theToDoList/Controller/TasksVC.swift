@@ -65,12 +65,17 @@ extension TasksVC: UITableViewDataSource {
         case 0:
             let title = tasksArray.readyTasks[indexPath.row].title
             cell.changeTitle(text: title)
+            cell.hideTime()
             cell.changeImage(text: "done")
+            
             return cell
         case 1:
             let title = tasksArray.arrayTasks[indexPath.row].title
+            let time = tasksArray.arrayTasks[indexPath.row].deadLine
             cell.changeTitle(text: title)
             cell.changeImage(text: "")
+            cell.showTime()
+            cell.changeTime(time: time ?? "no deadline")
             return cell
         default:
             return cell

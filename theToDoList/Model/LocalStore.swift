@@ -14,5 +14,4 @@ func addExampleTasks(){
     tasksArray.appendNewTask(title: "Drink protein", description: "Much better than vodka actualy",  start: nil, end: nil)
 }
 
-
 var users = Users()
