@@ -9,7 +9,7 @@ import UIKit
 
 class TasksVC: UIViewController {
 
-    var tasksView: TasksView {
+    private var tasksView: TasksView {
         return self.view as! TasksView
     }
     
@@ -53,19 +53,24 @@ extension TasksVC: UITableViewDataSource {
             return tasksArray.arrayTasks.count
         default: return 0
         }
-}
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as! CustomCell
         cell.backgroundColor = .white
+        cell.layer.cornerRadius = 10
         
         let segmentedControlIndex = tasksView.segmentedControl.selectedSegmentIndex
         switch segmentedControlIndex {
         case 0:
-            cell.textLabel?.text = tasksArray.readyTasks[indexPath.row].title
+            let title = tasksArray.readyTasks[indexPath.row].title
+            cell.changeTitle(text: title)
+            cell.changeImage(text: "done")
             return cell
         case 1:
-            cell.textLabel?.text = tasksArray.arrayTasks[indexPath.row].title
+            let title = tasksArray.arrayTasks[indexPath.row].title
+            cell.changeTitle(text: title)
+            cell.changeImage(text: "")
             return cell
         default:
             return cell
@@ -132,9 +137,8 @@ extension TasksVC: UITableViewDelegate {
             let title = tasksArray.readyTasks[indexPath.row].title
             let description = tasksArray.readyTasks[indexPath.row].description
             let vc = InfoTaskVC()
-            vc.indexOfTask = indexPath.row
             vc.buttonOff()
-            vc.infoTaskView.setViewWithContent(title: title, description: description)
+            vc.setInfo(title: title, description: description, index: indexPath.row)
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
             present(vc, animated: true)
@@ -149,5 +153,9 @@ extension TasksVC: UITableViewDelegate {
         default:
             break
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        50
     }
 }

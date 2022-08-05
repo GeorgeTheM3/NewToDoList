@@ -48,11 +48,12 @@ class AddTaskView: UIView {
         return tf
     }()
     
-    lazy var textfieldDescription: UITextView = {
-        let tf = UITextView()
-        tf.layer.cornerRadius = 5
-        tf.layer.borderWidth = 1
-        return tf
+    lazy var textViewDescription: UITextView = {
+        let tv = UITextView()
+        tv.layer.cornerRadius = 5
+        tv.layer.borderWidth = 1
+        tv.font = UIFont(name: "Al Nile", size: 20)
+        return tv
     }()
     
     private lazy var plusButton: UIButton = {
@@ -127,7 +128,7 @@ class AddTaskView: UIView {
     }
     
     private func textFieldDescriptionLabelConstraints() {
-        textfieldDescription.snp.makeConstraints { make in
+        textViewDescription.snp.makeConstraints { make in
             make.bottom.equalTo(-164)
             make.leading.equalTo(63)
             make.height.equalTo(461)
@@ -159,7 +160,7 @@ class AddTaskView: UIView {
         self.addSubview(titleLabel)
         self.addSubview(descriptionLabel)
         self.addSubview(textfieldTitle)
-        self.addSubview(textfieldDescription)
+        self.addSubview(textViewDescription)
         self.addSubview(plusButton)
     }
     

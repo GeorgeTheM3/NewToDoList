@@ -10,11 +10,11 @@ import UIKit
 
 class InfoTaskVC: UIViewController {
     
-    lazy var titleTask: String = ""
-    lazy var descriptionTask: String? = ""
-    lazy var indexOfTask: Int = 0
+    private lazy var titleTask: String = ""
+    private lazy var descriptionTask: String? = ""
+    private lazy var indexOfTask: Int = 0
     
-    var infoTaskView: InfoTaskView {
+    private var infoTaskView: InfoTaskView {
         return self.view as! InfoTaskView
     }
     

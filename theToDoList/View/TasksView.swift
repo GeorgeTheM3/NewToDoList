@@ -39,7 +39,7 @@ class TasksView: UIView {
     
     lazy var tableViewTasks: UITableView = {
         let tv = UITableView()
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tv.register(CustomCell.self, forCellReuseIdentifier: "cell")
         tv.backgroundColor = UIColor(white: 1, alpha: 0.2)
         return tv
     }()

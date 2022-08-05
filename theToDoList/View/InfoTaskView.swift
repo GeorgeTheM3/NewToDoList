@@ -39,6 +39,7 @@ class InfoTaskView: UIView {
     lazy var descriptionView: UITextView = {
         let tv = UITextView()
         tv.text = "A lot of words and something else bla bla bla"
+        tv.font = UIFont(name: "Al Nile", size: 20)
         tv.isEditable = false
         return tv
     }()

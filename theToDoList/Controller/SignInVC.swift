@@ -49,21 +49,23 @@ class SignInVC: UIViewController {
     }
     
     @objc private func checkUser() {
-        getUserNameAndPassword()
-        let result = users.checkUserInMemory(name: userName, password: userPassword)
-        if result {
-            goToTasks()
-        } else {
-            signInView.incorectLabel()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                self.signInView.incorectLabel()
-            }
-        }
+//        getUserNameAndPassword()
+//        let result = users.checkUserInMemory(name: userName, password: userPassword)
+//        if result {
+//            goToTasks()
+//        } else {
+//            signInView.incorectLabel()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+//                self.signInView.incorectLabel()
+//            }
+//        }
+        goToTasks()
     }
     
     @objc private func forgetPassword() {
         let alertController = UIAlertController(title: "Forgot password?", message: "Enter user name", preferredStyle: .alert)
         alertController.addTextField()
+        
         let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
             self.userName = alertController.textFields![0].text
             guard self.userName != nil else { return }
@@ -73,6 +75,7 @@ class SignInVC: UIViewController {
             ac.addAction(okAction)
             self.present(ac, animated: true)
         }
+        
         alertController.addAction(doneAction)
         self.present(alertController,animated: true)
     }
