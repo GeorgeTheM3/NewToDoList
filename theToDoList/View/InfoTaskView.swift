@@ -28,7 +28,7 @@ class InfoTaskView: UIView {
         return button
     }()
     
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Some task title"
         label.textColor = .white
@@ -36,7 +36,23 @@ class InfoTaskView: UIView {
         return label
     }()
     
-    lazy var descriptionView: UITextView = {
+    private lazy var startTime: UILabel = {
+        let label = UILabel()
+        label.text = "Start time"
+        label.textColor = .white
+        label.font = UIFont(name: "AlNile-Bold", size: 20)
+        return label
+    }()
+    
+    lazy var deadLine: UILabel = {
+        let label = UILabel()
+        label.text = "Dead line"
+        label.textColor = .white
+        label.font = UIFont(name: "AlNile-Bold", size: 20)
+        return label
+    }()
+    
+    private lazy var descriptionView: UITextView = {
         let tv = UITextView()
         tv.text = "A lot of words and something else bla bla bla"
         tv.font = UIFont(name: "Al Nile", size: 20)
@@ -59,6 +75,8 @@ class InfoTaskView: UIView {
         arrowButtonConstraints()
         deleteButtonConstraints()
         doneButtonConstraints()
+        deadLineImageConstarints()
+        startTimeConstarints()
     }
     
     required init?(coder Decoder: NSCoder) {
@@ -70,6 +88,8 @@ class InfoTaskView: UIView {
         arrowButtonConstraints()
         deleteButtonConstraints()
         doneButtonConstraints()
+        deadLineImageConstarints()
+        startTimeConstarints()
     }
     
     private func arrowButtonConstraints() {
@@ -104,7 +124,7 @@ class InfoTaskView: UIView {
     
     private func descriptionViewConstraints() {
         descriptionView.snp.makeConstraints { make in
-            make.top.equalTo(155)
+            make.top.equalTo(200)
             make.leading.equalTo(66)
             make.width.equalTo(264)
             make.height.equalTo(594)
@@ -120,6 +140,24 @@ class InfoTaskView: UIView {
         }
     }
     
+    private func startTimeConstarints() {
+        startTime.snp.makeConstraints { make in
+            make.top.equalTo(135)
+            make.leading.equalTo(66)
+            make.width.equalTo(200)
+            make.height.equalTo(50)
+        }
+    }
+    
+    private func deadLineImageConstarints() {
+        deadLine.snp.makeConstraints { make in
+            make.top.equalTo(160)
+            make.leading.equalTo(66)
+            make.width.equalTo(200)
+            make.height.equalTo(50)
+        }
+    }
+    
      private func setViews() {
         self.addSubview(backgroundImage)
         self.addSubview(titleLabel)
@@ -127,6 +165,8 @@ class InfoTaskView: UIView {
         self.addSubview(arrowButton)
         self.addSubview(deleteButton)
         self.addSubview(doneButton)
+        self.addSubview(deadLine)
+        self.addSubview(startTime)
     }
     
     func backButton(_ target: Any?, action: Selector) {

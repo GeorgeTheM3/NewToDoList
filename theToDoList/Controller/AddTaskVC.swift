@@ -32,8 +32,10 @@ class AddTaskVC: UIViewController {
     @objc private func toTaskViewWithData() {
         let title = addTaskView.textfieldTitle.text
         let description = addTaskView.textViewDescription.text
+        let startTime = addTaskView.returnStartTime()
+        let deadLine =  addTaskView.returnDeadLine()
         // почему не добавляется description от метода класса?
-        tasksArray.appendNewTask(title: title!, description: description)
+        tasksArray.appendNewTask(title: title!, description: description, start: startTime, end: deadLine)
         dismiss(animated: true)
     }
 }

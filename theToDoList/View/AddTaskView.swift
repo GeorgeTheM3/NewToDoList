@@ -40,11 +40,29 @@ class AddTaskView: UIView {
         return password
     }()
     
-    lazy var textfieldTitle: UITextField = {
+    private(set) lazy var textfieldTitle: UITextField = {
         let tf = UITextField()
         tf.layer.cornerRadius = 5
         tf.layer.borderWidth = 1
         tf.borderStyle = .roundedRect
+        return tf
+    }()
+    
+    private lazy var startTimeTextField: UITextField = {
+        let tf = UITextField()
+        tf.layer.cornerRadius = 5
+        tf.layer.borderWidth = 1
+        tf.borderStyle = .roundedRect
+        tf.placeholder = "Enter start date"
+        return tf
+    }()
+    
+    private lazy var deadLineTextField: UITextField = {
+        let tf = UITextField()
+        tf.layer.cornerRadius = 5
+        tf.layer.borderWidth = 1
+        tf.borderStyle = .roundedRect
+        tf.placeholder = "Enter deadline date"
         return tf
     }()
     
@@ -75,8 +93,10 @@ class AddTaskView: UIView {
         titleLabelConstraints()
         descriptionLabelConstraints()
         textFieldTitleConstraints()
-        textFieldDescriptionLabelConstraints()
+        textViewDescriptionLabelConstraints()
         plusButtonConstraints()
+        textFieldDeadLineConstraints()
+        textFieldStartTimeConstraints()
         
     }
     
@@ -88,9 +108,23 @@ class AddTaskView: UIView {
         titleLabelConstraints()
         descriptionLabelConstraints()
         textFieldTitleConstraints()
-        textFieldDescriptionLabelConstraints()
+        textViewDescriptionLabelConstraints()
         plusButtonConstraints()
+        textFieldDeadLineConstraints()
+        textFieldStartTimeConstraints()
         
+    }
+    
+    private func setViews() {
+        self.addSubview(backgroundImage)
+        self.addSubview(arrowButton)
+        self.addSubview(titleLabel)
+        self.addSubview(descriptionLabel)
+        self.addSubview(textfieldTitle)
+        self.addSubview(textViewDescription)
+        self.addSubview(plusButton)
+        self.addSubview(deadLineTextField)
+        self.addSubview(startTimeTextField)
     }
     
     private func arrowButtonConstraints() {
@@ -127,11 +161,11 @@ class AddTaskView: UIView {
         }
     }
     
-    private func textFieldDescriptionLabelConstraints() {
+    private func textViewDescriptionLabelConstraints() {
         textViewDescription.snp.makeConstraints { make in
-            make.bottom.equalTo(-164)
+            make.bottom.equalTo(-300)
             make.leading.equalTo(63)
-            make.height.equalTo(461)
+            make.height.equalTo(327)
             make.width.equalTo(264)
         }
     }
@@ -154,14 +188,22 @@ class AddTaskView: UIView {
         }
     }
     
-    private func setViews() {
-        self.addSubview(backgroundImage)
-        self.addSubview(arrowButton)
-        self.addSubview(titleLabel)
-        self.addSubview(descriptionLabel)
-        self.addSubview(textfieldTitle)
-        self.addSubview(textViewDescription)
-        self.addSubview(plusButton)
+    private func textFieldStartTimeConstraints() {
+        startTimeTextField.snp.makeConstraints { make in
+            make.bottom.equalTo(-235)
+            make.leading.equalTo(63)
+            make.trailing.equalTo(-63)
+            make.height.equalTo(55)
+        }
+    }
+    
+    private func textFieldDeadLineConstraints() {
+        deadLineTextField.snp.makeConstraints { make in
+            make.bottom.equalTo(-170)
+            make.leading.equalTo(63)
+            make.trailing.equalTo(-63)
+            make.height.equalTo(55)
+        }
     }
     
     func backButton(_ target: Any?, action: Selector) {
@@ -171,4 +213,14 @@ class AddTaskView: UIView {
     func plusButton(_ target: Any?, action: Selector) {
         plusButton.addTarget(target, action: action, for: .touchUpInside)
     }
+    
+    func returnStartTime() -> String? {
+        return startTimeTextField.text
+    }
+    
+    func returnDeadLine() -> String? {
+        return deadLineTextField.text
+    }
+    
+    
 }

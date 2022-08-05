@@ -10,6 +10,8 @@ import Foundation
 struct Task {
     var title: String
     var description: String?
+    var startTime: String?
+    var deadLine: String?
     var status = false
     
     mutating func changeStatus() {

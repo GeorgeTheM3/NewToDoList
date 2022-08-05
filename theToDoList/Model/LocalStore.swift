@@ -9,9 +9,9 @@
 var tasksArray = Tasks()
 
 func addExampleTasks(){
-    tasksArray.appendNewTask(title: "Buy milk", description: nil)
-    tasksArray.appendNewTask(title: "Go to gym", description: "Make yourself some stronger")
-    tasksArray.appendNewTask(title: "Drink protein", description: "Much better than vodka actualy")
+    tasksArray.appendNewTask(title: "Buy milk", description: nil, start: nil, end: nil)
+    tasksArray.appendNewTask(title: "Go to gym", description: "Make yourself some stronger",  start: nil, end: nil)
+    tasksArray.appendNewTask(title: "Drink protein", description: "Much better than vodka actualy",  start: nil, end: nil)
 }
 
 

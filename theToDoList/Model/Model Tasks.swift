@@ -11,7 +11,7 @@ class Tasks {
     var arrayTasks: [Task] = []
     var readyTasks: [Task] = []
     
-    func appendNewTask(title: String, description: String?){
+    func appendNewTask(title: String, description: String?, start: String?, end: String?){
         let task = Task(title: title, description: description ?? "No description")
         arrayTasks.append(task)
     }

@@ -31,16 +31,12 @@ class InfoTaskVC: UIViewController {
         infoTaskView.setViewWithContent(title: titleTask, description: descriptionTask)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     @objc private func toTasksView() {
         dismiss(animated: true)
     }
     
     @objc private func deleteToTasksView() {
-        tasksArray.removeTask(title: infoTaskView.titleLabel.text!)
+        tasksArray.removeTask(title: titleTask)
         dismiss(animated: true)
     }
     
