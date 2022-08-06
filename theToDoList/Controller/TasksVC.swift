@@ -141,17 +141,21 @@ extension TasksVC: UITableViewDelegate {
         case 0:
             let title = tasksArray.readyTasks[indexPath.row].title
             let description = tasksArray.readyTasks[indexPath.row].description
+            let startTime = tasksArray.readyTasks[indexPath.row].startTime
+            let endTime = tasksArray.readyTasks[indexPath.row].deadLine
             let vc = InfoTaskVC()
             vc.buttonOff()
-            vc.setInfo(title: title, description: description, index: indexPath.row)
+            vc.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
             present(vc, animated: true)
         case 1:
             let title = tasksArray.arrayTasks[indexPath.row].title
             let description = tasksArray.arrayTasks[indexPath.row].description
+            let startTime = tasksArray.arrayTasks[indexPath.row].startTime
+            let endTime = tasksArray.arrayTasks[indexPath.row].deadLine
             let vc = InfoTaskVC()
-            vc.setInfo(title: title, description: description, index: indexPath.row)
+            vc.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
             present(vc, animated: true)

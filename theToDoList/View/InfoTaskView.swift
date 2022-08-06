@@ -40,13 +40,29 @@ class InfoTaskView: UIView {
         let label = UILabel()
         label.text = "Start time"
         label.textColor = .white
-        label.font = UIFont(name: "AlNile-Bold", size: 20)
+        label.font = UIFont(name: "SystemFont-Regular", size: 20)
         return label
     }()
     
     lazy var deadLine: UILabel = {
         let label = UILabel()
         label.text = "Dead line"
+        label.textColor = .white
+        label.font = UIFont(name: "SystemFont-Regular", size: 20)
+        return label
+    }()
+    
+    private lazy var start: UILabel = {
+        let label = UILabel()
+        label.text = "Start time:"
+        label.textColor = .white
+        label.font = UIFont(name: "AlNile-Bold", size: 20)
+        return label
+    }()
+    
+    private lazy var end: UILabel = {
+        let label = UILabel()
+        label.text = "Deadline:"
         label.textColor = .white
         label.font = UIFont(name: "AlNile-Bold", size: 20)
         return label
@@ -75,8 +91,10 @@ class InfoTaskView: UIView {
         arrowButtonConstraints()
         deleteButtonConstraints()
         doneButtonConstraints()
-        deadLineImageConstarints()
+        deadLineConstarints()
         startTimeConstarints()
+        endConstarints()
+        startConstarints()
     }
     
     required init?(coder Decoder: NSCoder) {
@@ -88,8 +106,10 @@ class InfoTaskView: UIView {
         arrowButtonConstraints()
         deleteButtonConstraints()
         doneButtonConstraints()
-        deadLineImageConstarints()
+        deadLineConstarints()
         startTimeConstarints()
+        endConstarints()
+        startConstarints()
     }
     
     private func arrowButtonConstraints() {
@@ -124,10 +144,10 @@ class InfoTaskView: UIView {
     
     private func descriptionViewConstraints() {
         descriptionView.snp.makeConstraints { make in
-            make.top.equalTo(200)
+            make.top.equalTo(150)
             make.leading.equalTo(66)
             make.width.equalTo(264)
-            make.height.equalTo(594)
+            make.height.equalTo(494)
         }
     }
     
@@ -142,18 +162,32 @@ class InfoTaskView: UIView {
     
     private func startTimeConstarints() {
         startTime.snp.makeConstraints { make in
-            make.top.equalTo(135)
-            make.leading.equalTo(66)
-            make.width.equalTo(200)
+            make.bottom.equalTo(-128)
+            make.trailing.equalTo(-61)
             make.height.equalTo(50)
         }
     }
     
-    private func deadLineImageConstarints() {
+    private func deadLineConstarints() {
         deadLine.snp.makeConstraints { make in
-            make.top.equalTo(160)
-            make.leading.equalTo(66)
-            make.width.equalTo(200)
+            make.bottom.equalTo(-153)
+            make.trailing.equalTo(-61)
+            make.height.equalTo(50)
+        }
+    }
+    
+    private func startConstarints() {
+        start.snp.makeConstraints { make in
+            make.bottom.equalTo(-150)
+            make.leading.equalTo(65)
+            make.height.equalTo(50)
+        }
+    }
+    
+    private func endConstarints() {
+        end.snp.makeConstraints { make in
+            make.bottom.equalTo(-125)
+            make.leading.equalTo(65)
             make.height.equalTo(50)
         }
     }
@@ -167,6 +201,8 @@ class InfoTaskView: UIView {
         self.addSubview(doneButton)
         self.addSubview(deadLine)
         self.addSubview(startTime)
+        self.addSubview(end)
+        self.addSubview(start)
     }
     
     func backButton(_ target: Any?, action: Selector) {
@@ -181,9 +217,11 @@ class InfoTaskView: UIView {
         doneButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
-    func setViewWithContent(title: String, description: String?) {
+    func setViewWithContent(title: String, description: String?, start: String?, end: String?) {
         titleLabel.text = title
-        descriptionView.text = description
+        descriptionView.text = description ?? "No description"
+        startTime.text = start ?? "No start time"
+        deadLine.text = end ?? "No deadline"
     }
     
     func turnOffButton() {

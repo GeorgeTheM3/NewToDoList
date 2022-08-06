@@ -17,7 +17,7 @@ class CustomCell: UITableViewCell {
     
     private lazy var timeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "AlNile-Bold", size: 13)
+        label.font = UIFont(name: "SystemFont-Regular", size: 13)
         return label
     }()
     

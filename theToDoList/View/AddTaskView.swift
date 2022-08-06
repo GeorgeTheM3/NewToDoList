@@ -70,7 +70,7 @@ class AddTaskView: UIView {
         let tv = UITextView()
         tv.layer.cornerRadius = 5
         tv.layer.borderWidth = 1
-        tv.font = UIFont(name: "Al Nile", size: 20)
+        tv.font = UIFont(name: "SystemFont-Regular", size: 20)
         return tv
     }()
     
@@ -221,7 +221,7 @@ class AddTaskView: UIView {
     }
     
     func returnDiscription() -> String? {
-        return textViewDescription.text ?? "No description"
+        return textViewDescription.text
     }
     
     func returnStartTime() -> String? {

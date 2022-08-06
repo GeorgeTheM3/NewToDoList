@@ -13,6 +13,8 @@ class InfoTaskVC: UIViewController {
     private lazy var titleTask: String = ""
     private lazy var descriptionTask: String? = ""
     private lazy var indexOfTask: Int = 0
+    private lazy var startTime: String? = ""
+    private lazy var endTime: String? = ""
     
     private var infoTaskView: InfoTaskView {
         return self.view as! InfoTaskView
@@ -28,7 +30,7 @@ class InfoTaskVC: UIViewController {
         infoTaskView.backButton(self, action: #selector(toTasksView))
         infoTaskView.deleteButton(self, action: #selector(deleteToTasksView))
         infoTaskView.doneButton(self, action: #selector(doneTasksButton))
-        infoTaskView.setViewWithContent(title: titleTask, description: descriptionTask)
+        infoTaskView.setViewWithContent(title: titleTask, description: descriptionTask, start: startTime, end: endTime)
     }
     
     @objc private func toTasksView() {
@@ -49,9 +51,11 @@ class InfoTaskVC: UIViewController {
         infoTaskView.turnOffButton()
     }
     
-    func setInfo(title: String, description: String?, index: Int){
+    func setInfo(title: String, description: String?, index: Int, start: String?, end: String?){
         titleTask = title
         descriptionTask = description
         indexOfTask = index
+        startTime = start
+        endTime = end
     }
 }
