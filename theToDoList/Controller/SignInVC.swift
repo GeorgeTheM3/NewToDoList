@@ -49,17 +49,16 @@ class SignInVC: UIViewController {
     }
     
     @objc private func checkUser() {
-//        getUserNameAndPassword()
-//        let result = users.checkUserInMemory(name: userName, password: userPassword)
-//        if result {
-//            goToTasks()
-//        } else {
-//            signInView.incorectLabel()
-//            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-//                self.signInView.incorectLabel()
-//            }
-//        }
-        goToTasks()
+        getUserNameAndPassword()
+        let result = users.checkUserInMemory(name: userName, password: userPassword)
+        if result {
+            goToTasks()
+        } else {
+            signInView.incorectLabel()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                self.signInView.incorectLabel()
+            }
+        }
     }
     
     @objc private func forgetPassword() {

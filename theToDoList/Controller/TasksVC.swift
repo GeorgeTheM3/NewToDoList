@@ -143,9 +143,10 @@ extension TasksVC: UITableViewDelegate {
             let description = tasksArray.readyTasks[indexPath.row].description
             let startTime = tasksArray.readyTasks[indexPath.row].startTime
             let endTime = tasksArray.readyTasks[indexPath.row].deadLine
+            print(tasksArray.readyTasks[indexPath.row])
             let vc = InfoTaskVC()
-            vc.buttonOff()
             vc.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
+            vc.buttonOff()
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
             present(vc, animated: true)

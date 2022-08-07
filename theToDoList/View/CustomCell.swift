@@ -83,7 +83,6 @@ class CustomCell: UITableViewCell {
     }
     
     func changeTime(time: String) {
-//        timeLabel.text = "until \(time)"
         timeLabel.text = time
     }
     

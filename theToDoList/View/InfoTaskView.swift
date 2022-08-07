@@ -225,6 +225,6 @@ class InfoTaskView: UIView {
     }
     
     func turnOffButton() {
-        doneButton.isEnabled = false
+        doneButton.isHidden = true 
     }
 }
