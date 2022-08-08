@@ -10,25 +10,25 @@ import UIKit
 
 class InfoTaskView: UIView {
     
-    private lazy var arrowButton: UIButton = {
+    private(set) lazy var arrowButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "forwardArrow"), for: .normal)
         return button
     }()
     
-    private lazy var deleteButton: UIButton = {
+    private(set) lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "close"), for: .normal)
         return button
     }()
     
-    private lazy var doneButton: UIButton = {
+    private(set) lazy var doneButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "done"), for: .normal)
         return button
     }()
     
-    private lazy var titleLabel: UILabel = {
+    private(set) lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Some task title"
         label.textColor = .white
@@ -36,14 +36,14 @@ class InfoTaskView: UIView {
         return label
     }()
     
-    private lazy var startTime: UILabel = {
+    private(set) lazy var startTime: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont(name: "SystemFont-Regular", size: 20)
         return label
     }()
     
-    lazy var deadLine: UILabel = {
+    private(set) lazy var deadLine: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont(name: "SystemFont-Regular", size: 20)
@@ -66,7 +66,7 @@ class InfoTaskView: UIView {
         return label
     }()
     
-    private lazy var descriptionView: UITextView = {
+    private(set) lazy var descriptionView: UITextView = {
         let tv = UITextView()
         tv.text = "A lot of words and something else bla bla bla"
         tv.font = UIFont(name: "Al Nile", size: 20)
@@ -201,28 +201,5 @@ class InfoTaskView: UIView {
         self.addSubview(startTime)
         self.addSubview(end)
         self.addSubview(start)
-    }
-    
-    func backButton(_ target: Any?, action: Selector) {
-        arrowButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func deleteButton(_ target: Any?, action: Selector) {
-        deleteButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func doneButton(_ target: Any?, action: Selector) {
-        doneButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func setViewWithContent(title: String, description: String?, start: String?, end: String?) {
-        titleLabel.text = title
-        descriptionView.text = description ?? "No description"
-        startTime.text = start ?? "No start time"
-        deadLine.text = end ?? "No deadline"
-    }
-    
-    func turnOffButton() {
-        doneButton.isHidden = true 
     }
 }

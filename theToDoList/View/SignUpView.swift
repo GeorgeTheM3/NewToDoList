@@ -29,7 +29,7 @@ class SignUpView: UIView {
         return password
     }()
     
-    private lazy var textFieldName: UITextField = {
+    private(set) lazy var textFieldName: UITextField = {
         let tf = UITextField()
         tf.layer.cornerRadius = 5
         tf.layer.borderWidth = 1
@@ -38,7 +38,7 @@ class SignUpView: UIView {
         return tf
     }()
     
-    private lazy var textFieldPassword: UITextField = {
+    private(set) lazy var textFieldPassword: UITextField = {
         let tf = UITextField()
         tf.layer.cornerRadius = 5
         tf.layer.borderWidth = 1
@@ -47,9 +47,8 @@ class SignUpView: UIView {
         return tf
     }()
     
-    private lazy var signUpButton: UIButton = {
+    private(set) lazy var signUpButton: UIButton = {
         let button = UIButton()
-//        button.isEnabled = false
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
@@ -59,7 +58,7 @@ class SignUpView: UIView {
         return button
     }()
     
-    private lazy var arrowButton: UIButton = {
+    private(set) lazy var arrowButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "backArrowWhite"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -151,27 +150,5 @@ class SignUpView: UIView {
         self.addSubview(self.textFieldPassword)
         self.addSubview(self.signUpButton)
         self.addSubview(self.arrowButton)
-    }
-    
-    func backButtonTarget(_ target: Any?, action: Selector) {
-        arrowButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func signUpButtonTarget(_ target: Any?, action: Selector) {
-        signUpButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func getName() -> String {
-        guard let text = textFieldName.text else { return ""}
-        return text
-    }
-    
-    func getPassword() -> String {
-        guard let text = textFieldPassword.text else { return ""}
-        return text
-    }
-    
-    func switchSignUpButton(){
-        signUpButton.isEnabled = !signUpButton.isEnabled
     }
 }

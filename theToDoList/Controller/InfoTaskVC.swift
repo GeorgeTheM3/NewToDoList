@@ -27,10 +27,10 @@ class InfoTaskVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        infoTaskView.backButton(self, action: #selector(toTasksView))
-        infoTaskView.deleteButton(self, action: #selector(deleteToTasksView))
-        infoTaskView.doneButton(self, action: #selector(doneTasksButton))
-        infoTaskView.setViewWithContent(title: titleTask, description: descriptionTask, start: startTime, end: endTime)
+        backButton(self, action: #selector(toTasksView))
+        deleteButton(self, action: #selector(deleteToTasksView))
+        doneButton(self, action: #selector(doneTasksButton))
+        setViewWithContent(title: titleTask, description: descriptionTask, start: startTime, end: endTime)
     }
     
     @objc private func toTasksView() {
@@ -48,7 +48,7 @@ class InfoTaskVC: UIViewController {
     }
     
     func buttonOff() {
-        infoTaskView.turnOffButton()
+        turnOffButton()
     }
     
     func setInfo(title: String, description: String?, index: Int, start: Date?, end: String?){
@@ -58,5 +58,29 @@ class InfoTaskVC: UIViewController {
         indexOfTask = index
         startTime = data
         endTime = end
+    }
+    
+    
+    private func backButton(_ target: Any?, action: Selector) {
+        infoTaskView.arrowButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func deleteButton(_ target: Any?, action: Selector) {
+        infoTaskView.deleteButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func doneButton(_ target: Any?, action: Selector) {
+        infoTaskView.doneButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func setViewWithContent(title: String, description: String?, start: String?, end: String?) {
+        infoTaskView.titleLabel.text = title
+        infoTaskView.descriptionView.text = description ?? "No description"
+        infoTaskView.startTime.text = start ?? "No start time"
+        infoTaskView.deadLine.text = end ?? "No deadline"
+    }
+    
+    private func turnOffButton() {
+        infoTaskView.doneButton.isHidden = true
     }
 }

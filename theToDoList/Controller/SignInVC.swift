@@ -19,9 +19,10 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signInView.signUpButtonTarget(self, action: #selector(goToSignUpView))
-        signInView.signInButtonTarget(self, action: #selector(checkUser))
-        signInView.forgetButtonTarget(self, action: #selector(forgetPassword))
+        signUpButtonTarget(self, action: #selector(goToSignUpView))
+        signInButtonTarget(self, action: #selector(checkUser))
+        forgetButtonTarget(self, action: #selector(forgetPassword))
+        
     }
     
     override func loadView() {
@@ -44,8 +45,8 @@ class SignInVC: UIViewController {
         }
     
     private func getUserNameAndPassword() {
-        userName = signInView.getName()
-        userPassword = signInView.getPassword()
+        userName = getName()
+        userPassword = getPassword()
     }
     
     @objc private func checkUser() {
@@ -54,9 +55,9 @@ class SignInVC: UIViewController {
         if result {
             goToTasks()
         } else {
-            signInView.incorectLabel()
+            incorectLabel()
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                self.signInView.incorectLabel()
+                self.incorectLabel()
             }
         }
     }
@@ -77,5 +78,31 @@ class SignInVC: UIViewController {
         
         alertController.addAction(doneAction)
         self.present(alertController,animated: true)
+    }
+    
+    private func signUpButtonTarget(_ target: Any?, action: Selector) {
+        signInView.signUpButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func signInButtonTarget(_ target: Any?, action: Selector) {
+        signInView.signInButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func forgetButtonTarget(_ target: Any?, action: Selector) {
+        signInView.forgetPasswordButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func getName() -> String {
+        guard let text = signInView.textFieldName.text else { return "password is empty"}
+        return text
+    }
+    
+    private func getPassword() -> String {
+        guard let text = signInView.textFieldPassword.text else { return "password is empty"}
+        return text
+    }
+    
+    private func incorectLabel() {
+        signInView.incorectUserLable.isHidden = !signInView.incorectUserLable.isHidden
     }
 }

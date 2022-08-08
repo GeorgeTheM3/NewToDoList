@@ -18,8 +18,8 @@ class SignUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUpView.backButtonTarget(self, action: #selector(goBack))
-        signUpView.signUpButtonTarget(self, action: #selector(appendUser))
+        backButtonTarget(self, action: #selector(goBack))
+        signUpButtonTarget(self, action: #selector(appendUser))
     }
     
     override func loadView() {
@@ -32,8 +32,8 @@ class SignUpVC: UIViewController {
     }
     
     private func getUserNameAndPassword() {
-        userName = signUpView.getName()
-        userPassword = signUpView.getPassword()
+        userName = getName()
+        userPassword = getPassword()
     }
     
     @objc private func appendUser() {
@@ -41,5 +41,27 @@ class SignUpVC: UIViewController {
         users.appendNewUser(name: userName, password: userPassword)
         print(users.users)
         dismiss(animated: true)
+    }
+    
+    private func backButtonTarget(_ target: Any?, action: Selector) {
+        signUpView.arrowButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func signUpButtonTarget(_ target: Any?, action: Selector) {
+        signUpView.signUpButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func getName() -> String {
+        guard let text = signUpView.textFieldName.text else { return ""}
+        return text
+    }
+    
+    private func getPassword() -> String {
+        guard let text = signUpView.textFieldPassword.text else { return ""}
+        return text
+    }
+    
+    private func switchSignUpButton(){
+        signUpView.signUpButton.isEnabled = !signUpView.signUpButton.isEnabled
     }
 }

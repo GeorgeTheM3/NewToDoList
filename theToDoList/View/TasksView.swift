@@ -10,7 +10,7 @@ import SnapKit
 
 class TasksView: UIView {
     
-    private lazy var addTaskButton: UIButton = {
+    private(set) lazy var addTaskButton: UIButton = {
         let button = UIButton()
         button.setTitle("Add task", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -26,7 +26,7 @@ class TasksView: UIView {
         return image
     }()
     
-    lazy var segmentedControl: UISegmentedControl = {
+    private(set)lazy var segmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: "Ready", at: 0, animated: true)
         sc.insertSegment(withTitle: "In progress", at: 1, animated: true)
@@ -105,15 +105,6 @@ class TasksView: UIView {
         self.addSubview(segmentedControl)
         self.addSubview(tableViewTasks)
     }
-    
-    func toAddTaskView(_ target: Any?, action: Selector) {
-        addTaskButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func segmentedCont(_ target: Any?, action: Selector) {
-        segmentedControl.addTarget(target, action: action, for: .valueChanged)
-    }
-    
 }
 
 

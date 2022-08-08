@@ -10,7 +10,7 @@ import UIKit
 
 class AddTaskView: UIView {
     
-    private lazy var arrowButton: UIButton = {
+    private(set) lazy var arrowButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "backArrowWhite"), for: .normal)
         return button
@@ -48,7 +48,7 @@ class AddTaskView: UIView {
         return tf
     }()
     
-    private lazy var startTimeTextField: UITextField = {
+    private(set) lazy var startTimeTextField: UITextField = {
         let tf = UITextField()
         tf.layer.cornerRadius = 5
         tf.layer.borderWidth = 1
@@ -57,7 +57,7 @@ class AddTaskView: UIView {
         return tf
     }()
     
-    private lazy var deadLineTextField: UITextField = {
+    private(set) lazy var deadLineTextField: UITextField = {
         let tf = UITextField()
         tf.layer.cornerRadius = 5
         tf.layer.borderWidth = 1
@@ -66,7 +66,7 @@ class AddTaskView: UIView {
         return tf
     }()
     
-    private lazy var textViewDescription: UITextView = {
+    private(set) lazy var textViewDescription: UITextView = {
         let tv = UITextView()
         tv.layer.cornerRadius = 5
         tv.layer.borderWidth = 1
@@ -74,7 +74,7 @@ class AddTaskView: UIView {
         return tv
     }()
     
-    private lazy var plusButton: UIButton = {
+    private(set) lazy var plusButton: UIButton = {
         let button = UIButton()
         button.setTitle("+", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -84,7 +84,7 @@ class AddTaskView: UIView {
         return button
     }()
     
-    private lazy var datePicker: UIDatePicker = {
+    private(set) lazy var datePicker: UIDatePicker = {
         let dp = UIDatePicker()
         
         return dp
@@ -220,37 +220,5 @@ class AddTaskView: UIView {
             make.leading.equalTo(80)
             make.bottom.equalTo(-125)
         }
-    }
-    
-    func backButton(_ target: Any?, action: Selector) {
-        arrowButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func plusButton(_ target: Any?, action: Selector) {
-        plusButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func returnTitle() -> String {
-//        ???????
-        guard textfieldTitle.text?.isEmpty == false else {return "No title"}
-        return textfieldTitle.text!
-    }
-    
-    func returnDiscription() -> String? {
-        return textViewDescription.text
-    }
-    
-    func returnStartTime() -> String? {
-        startTimeTextField.text ?? ""
-    }
-    
-    func returnDeadLine() -> String? {
-//        вью же не может проверять пустая она или нет?
-        guard deadLineTextField.text?.isEmpty == false else {return nil}
-        return deadLineTextField.text
-    }
-
-    func datePickerData() -> Date {
-        datePicker.date
     }
 }

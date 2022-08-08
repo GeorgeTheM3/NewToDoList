@@ -22,8 +22,8 @@ class TasksVC: UIViewController {
         super.viewDidLoad()
         tasksView.tableViewTasks.dataSource = self
         tasksView.tableViewTasks.delegate = self
-        tasksView.toAddTaskView(self, action: #selector(toAddTaskView))
-        tasksView.segmentedCont(self, action: #selector(changeTasks))
+        toTaskView(self, action: #selector(toAddTaskView))
+        segmentedCont(self, action: #selector(changeTasks))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +40,15 @@ class TasksVC: UIViewController {
     
     @objc private func changeTasks(_ segmentedControl: UISegmentedControl){
         tasksView.tableViewTasks.reloadData()
+    }
+    
+    
+   private func toTaskView(_ target: Any?, action: Selector) {
+        tasksView.addTaskButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func segmentedCont(_ target: Any?, action: Selector) {
+        tasksView.segmentedControl.addTarget(target, action: action, for: .valueChanged)
     }
 }
 //MARK: TableView DataSourse

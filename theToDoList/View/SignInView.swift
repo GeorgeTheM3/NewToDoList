@@ -30,7 +30,7 @@ class SignInView: UIView {
         return password
     }()
     
-    private lazy var textFieldName: UITextField = {
+    private(set) lazy var textFieldName: UITextField = {
         let tf = UITextField()
         tf.layer.cornerRadius = 5
         tf.layer.borderWidth = 1
@@ -39,7 +39,7 @@ class SignInView: UIView {
         return tf
     }()
     
-    private lazy var textFieldPassword: UITextField = {
+    private(set) lazy var textFieldPassword: UITextField = {
         let tf = UITextField()
         tf.layer.cornerRadius = 5
         tf.layer.borderWidth = 1
@@ -48,7 +48,7 @@ class SignInView: UIView {
         return tf
     }()
     
-    private lazy var signUpButton: UIButton = {
+    private(set) lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -57,7 +57,7 @@ class SignInView: UIView {
         return button
     }()
     
-    private lazy var forgetPasswordButton: UIButton = {
+    private(set) lazy var forgetPasswordButton: UIButton = {
         let button = UIButton()
         button.setTitle("Forget password", for: .normal)
         button.setTitleColor(.orange, for: .normal)
@@ -66,7 +66,7 @@ class SignInView: UIView {
         return button
     }()
     
-    private lazy var signInButton: UIButton = {
+    private(set) lazy var signInButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign In", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -77,7 +77,7 @@ class SignInView: UIView {
         return button
     }()
     
-    private lazy var incorectUserLable: UILabel = {
+    private(set) lazy var incorectUserLable: UILabel = {
         let label = UILabel()
         label.isHidden = true
         label.text = "Incorect username or password"
@@ -193,32 +193,6 @@ class SignInView: UIView {
         self.addSubview(self.signUpButton)
         self.addSubview(self.forgetPasswordButton)
         self.addSubview(self.incorectUserLable)
-    }
-    
-    func signUpButtonTarget(_ target: Any?, action: Selector) {
-        signUpButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func signInButtonTarget(_ target: Any?, action: Selector) {
-        signInButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func forgetButtonTarget(_ target: Any?, action: Selector) {
-        forgetPasswordButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func getName() -> String {
-        guard let text = textFieldName.text else { return "password is empty"}
-        return text
-    }
-    
-    func getPassword() -> String {
-        guard let text = textFieldPassword.text else { return "password is empty"}
-        return text
-    }
-    
-    func incorectLabel() {
-        incorectUserLable.isHidden = !incorectUserLable.isHidden
     }
 }
 
