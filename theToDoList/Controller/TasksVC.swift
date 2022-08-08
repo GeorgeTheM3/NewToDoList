@@ -72,19 +72,16 @@ extension TasksVC: UITableViewDataSource {
         let segmentedControlIndex = tasksView.segmentedControl.selectedSegmentIndex
         switch segmentedControlIndex {
         case 0:
-            let title = tasksArray.readyTasks[indexPath.row].title
-            cell.changeTitle(text: title)
-            cell.hideTime()
-            cell.changeImage(text: "done")
-            
+            cell.titleLable.text = tasksArray.readyTasks[indexPath.row].title
+            cell.timeLabel.isHidden = true
+            cell.imageCell.image = UIImage(named: "done")
             return cell
         case 1:
-            let title = tasksArray.arrayTasks[indexPath.row].title
-            let time = tasksArray.arrayTasks[indexPath.row].deadLine
-            cell.changeTitle(text: title)
-            cell.changeImage(text: "")
-            cell.showTime()
-            cell.changeTime(time: time ?? "no deadline")
+            let date = tasksArray.arrayTasks[indexPath.row].deadLine?.formatted(date: .abbreviated, time: .shortened)
+            cell.timeLabel.text = date
+            cell.titleLable.text = tasksArray.arrayTasks[indexPath.row].title
+            cell.imageCell.image = UIImage(named: "")
+            cell.timeLabel.isHidden = false
             return cell
         default:
             return cell
@@ -153,12 +150,8 @@ extension TasksVC: UITableViewDelegate {
             let startTime = tasksArray.readyTasks[indexPath.row].startTime
             let endTime = tasksArray.readyTasks[indexPath.row].deadLine
             let vc = InfoTaskVC()
-            
-            
             vc.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
-            // почему если этот метод поднять выше setInfo то не отображаются данные?
             vc.buttonOff()
-            //
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
             present(vc, animated: true)

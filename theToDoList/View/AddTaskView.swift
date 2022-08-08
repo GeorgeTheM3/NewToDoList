@@ -86,7 +86,12 @@ class AddTaskView: UIView {
     
     private(set) lazy var datePicker: UIDatePicker = {
         let dp = UIDatePicker()
-        
+        return dp
+    }()
+    
+    private(set) lazy var datePickerStart: UIDatePicker = {
+        let dp = UIDatePicker()
+        dp.isHidden = true
         return dp
     }()
     
@@ -216,6 +221,14 @@ class AddTaskView: UIView {
     
     private func datePickerConstraints() {
         datePicker.snp.makeConstraints { make in
+            make.trailing.equalTo(-80)
+            make.leading.equalTo(80)
+            make.bottom.equalTo(-125)
+        }
+    }
+    
+    private func datePickerStartConstraints() {
+        datePickerStart.snp.makeConstraints { make in
             make.trailing.equalTo(-80)
             make.leading.equalTo(80)
             make.bottom.equalTo(-125)

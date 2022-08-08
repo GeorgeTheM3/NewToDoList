@@ -32,41 +32,44 @@ class AddTaskVC: UIViewController {
     @objc private func toTaskViewWithData() {
         let title = returnTitle()
         let description = returnDiscription()
-        let startTime = datePickerData()
-        let deadLine =  returnDeadLine()
-        // почему не добавляется description от метода класса?
+        let startTime = datePickerStart()
+        let deadLine = datePickerData()
         tasksArray.appendNewTask(title: title, description: description, start: startTime, end: deadLine)
         dismiss(animated: true)
     }
     
-    func backButton(_ target: Any?, action: Selector) {
+    private func backButton(_ target: Any?, action: Selector) {
         addTaskView.arrowButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
-    func plusButton(_ target: Any?, action: Selector) {
+    private func plusButton(_ target: Any?, action: Selector) {
         addTaskView.plusButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
-    func returnTitle() -> String {
+    private func returnTitle() -> String {
         guard addTaskView.textfieldTitle.text?.isEmpty == false else {return "No title"}
         return addTaskView.textfieldTitle.text!
     }
     
-    func returnDiscription() -> String? {
+    private func returnDiscription() -> String? {
         return addTaskView.textViewDescription.text
     }
     
-    func returnStartTime() -> String? {
+    private func returnStartTime() -> String? {
         addTaskView.startTimeTextField.text ?? ""
     }
     
-    func returnDeadLine() -> String? {
+    private func returnDeadLine() -> String? {
         guard addTaskView.deadLineTextField.text?.isEmpty == false else {return nil}
         return addTaskView.deadLineTextField.text
     }
 
-    func datePickerData() -> Date {
+    private func datePickerData() -> Date {
         addTaskView.datePicker.date
+    }
+    
+    private func datePickerStart() -> Date {
+        addTaskView.datePickerStart.date
     }
 }
 

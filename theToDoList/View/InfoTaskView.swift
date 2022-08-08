@@ -43,14 +43,14 @@ class InfoTaskView: UIView {
         return label
     }()
     
-    private(set) lazy var deadLine: UILabel = {
+    private(set) lazy var deadLineTime: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont(name: "SystemFont-Regular", size: 20)
         return label
     }()
     
-    private lazy var start: UILabel = {
+    private lazy var startLabel: UILabel = {
         let label = UILabel()
         label.text = "Started:"
         label.textColor = .white
@@ -58,7 +58,7 @@ class InfoTaskView: UIView {
         return label
     }()
     
-    private lazy var end: UILabel = {
+    private lazy var endLabal: UILabel = {
         let label = UILabel()
         label.text = "Deadline:"
         label.textColor = .white
@@ -160,30 +160,30 @@ class InfoTaskView: UIView {
     
     private func startTimeConstarints() {
         startTime.snp.makeConstraints { make in
-            make.bottom.equalTo(-128)
-            make.trailing.equalTo(-61)
-            make.height.equalTo(50)
-        }
-    }
-    
-    private func deadLineConstarints() {
-        deadLine.snp.makeConstraints { make in
-            make.bottom.equalTo(-153)
+            make.bottom.equalTo(-154)
             make.trailing.equalTo(-61)
             make.height.equalTo(50)
         }
     }
     
     private func startConstarints() {
-        start.snp.makeConstraints { make in
+        startLabel.snp.makeConstraints { make in
             make.bottom.equalTo(-150)
             make.leading.equalTo(65)
             make.height.equalTo(50)
         }
     }
     
+    private func deadLineConstarints() {
+        deadLineTime.snp.makeConstraints { make in
+            make.bottom.equalTo(-129)
+            make.trailing.equalTo(-61)
+            make.height.equalTo(50)
+        }
+    }
+    
     private func endConstarints() {
-        end.snp.makeConstraints { make in
+        endLabal.snp.makeConstraints { make in
             make.bottom.equalTo(-125)
             make.leading.equalTo(65)
             make.height.equalTo(50)
@@ -197,9 +197,9 @@ class InfoTaskView: UIView {
         self.addSubview(arrowButton)
         self.addSubview(deleteButton)
         self.addSubview(doneButton)
-        self.addSubview(deadLine)
+        self.addSubview(deadLineTime)
         self.addSubview(startTime)
-        self.addSubview(end)
-        self.addSubview(start)
+        self.addSubview(endLabal)
+        self.addSubview(startLabel)
     }
 }

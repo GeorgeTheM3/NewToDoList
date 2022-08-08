@@ -10,18 +10,19 @@ import UIKit
 import SnapKit
 
 class CustomCell: UITableViewCell {
-    private lazy var titleLable: UILabel = {
+    
+    private(set) lazy var titleLable: UILabel = {
         let label = UILabel()
         return label
     }()
     
-    private lazy var timeLabel: UILabel = {
+    private(set) lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "SystemFont-Regular", size: 13)
         return label
     }()
     
-    private lazy var imageCell: UIImageView = {
+    private(set) lazy var imageCell: UIImageView = {
         let image = UIImageView()
         return image
     }()
@@ -52,7 +53,6 @@ class CustomCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    
     private func titleLableContraints() {
         titleLable.snp.makeConstraints { make in
             make.leading.equalTo(10)
@@ -72,25 +72,5 @@ class CustomCell: UITableViewCell {
             make.trailing.equalTo(-10)
             make.height.equalTo(self.contentView)
         }
-    }
-    
-    func changeImage(text: String) {
-        imageCell.image = UIImage(named: "\(text)")
-    }
-    
-    func changeTitle(text: String) {
-        titleLable.text = text
-    }
-    
-    func changeTime(time: String) {
-        timeLabel.text = time
-    }
-    
-    func hideTime() {
-        timeLabel.isHidden = true
-    }
-    
-    func showTime() {
-        timeLabel.isHidden = false
     }
 }

@@ -13,7 +13,7 @@ class InfoTaskVC: UIViewController {
     private lazy var titleTask: String = ""
     private lazy var descriptionTask: String? = ""
     private lazy var indexOfTask: Int = 0
-    private lazy var startTime: String? = ""
+    private lazy var startTime: String = ""
     private lazy var endTime: String? = ""
     
     private var infoTaskView: InfoTaskView {
@@ -51,13 +51,14 @@ class InfoTaskVC: UIViewController {
         turnOffButton()
     }
     
-    func setInfo(title: String, description: String?, index: Int, start: Date?, end: String?){
-        let data = start?.formatted(date: .abbreviated, time: .shortened)
+    func setInfo(title: String, description: String?, index: Int, start: Date, end: Date?){
+        let dateStart = start.formatted(date: .abbreviated, time: .shortened)
+        let dateEnd = end?.formatted(date: .abbreviated, time: .shortened)
         titleTask = title
         descriptionTask = description
         indexOfTask = index
-        startTime = data
-        endTime = end
+        startTime = dateStart
+        endTime = dateEnd
     }
     
     
@@ -73,11 +74,11 @@ class InfoTaskVC: UIViewController {
         infoTaskView.doneButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
-    private func setViewWithContent(title: String, description: String?, start: String?, end: String?) {
+    private func setViewWithContent(title: String, description: String?, start: String, end: String?) {
         infoTaskView.titleLabel.text = title
-        infoTaskView.descriptionView.text = description ?? "No description"
-        infoTaskView.startTime.text = start ?? "No start time"
-        infoTaskView.deadLine.text = end ?? "No deadline"
+        infoTaskView.descriptionView.text = description
+        infoTaskView.startTime.text = start
+        infoTaskView.deadLineTime.text = end ?? "No deadline"
     }
     
     private func turnOffButton() {
