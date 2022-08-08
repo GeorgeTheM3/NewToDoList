@@ -38,7 +38,6 @@ class InfoTaskView: UIView {
     
     private lazy var startTime: UILabel = {
         let label = UILabel()
-        label.text = "Start time"
         label.textColor = .white
         label.font = UIFont(name: "SystemFont-Regular", size: 20)
         return label
@@ -46,7 +45,6 @@ class InfoTaskView: UIView {
     
     lazy var deadLine: UILabel = {
         let label = UILabel()
-        label.text = "Dead line"
         label.textColor = .white
         label.font = UIFont(name: "SystemFont-Regular", size: 20)
         return label
@@ -54,7 +52,7 @@ class InfoTaskView: UIView {
     
     private lazy var start: UILabel = {
         let label = UILabel()
-        label.text = "Start time:"
+        label.text = "Started:"
         label.textColor = .white
         label.font = UIFont(name: "AlNile-Bold", size: 20)
         return label

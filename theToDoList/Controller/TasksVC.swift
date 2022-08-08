@@ -143,10 +143,13 @@ extension TasksVC: UITableViewDelegate {
             let description = tasksArray.readyTasks[indexPath.row].description
             let startTime = tasksArray.readyTasks[indexPath.row].startTime
             let endTime = tasksArray.readyTasks[indexPath.row].deadLine
-            print(tasksArray.readyTasks[indexPath.row])
             let vc = InfoTaskVC()
+            
+            
             vc.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
+            // почему если этот метод поднять выше setInfo то не отображаются данные?
             vc.buttonOff()
+            //
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
             present(vc, animated: true)

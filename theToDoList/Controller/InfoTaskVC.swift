@@ -51,11 +51,12 @@ class InfoTaskVC: UIViewController {
         infoTaskView.turnOffButton()
     }
     
-    func setInfo(title: String, description: String?, index: Int, start: String?, end: String?){
+    func setInfo(title: String, description: String?, index: Int, start: Date?, end: String?){
+        let data = start?.formatted(date: .abbreviated, time: .shortened)
         titleTask = title
         descriptionTask = description
         indexOfTask = index
-        startTime = start
+        startTime = data
         endTime = end
     }
 }

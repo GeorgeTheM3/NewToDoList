@@ -84,6 +84,11 @@ class AddTaskView: UIView {
         return button
     }()
     
+    private lazy var datePicker: UIDatePicker = {
+        let dp = UIDatePicker()
+        
+        return dp
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -97,6 +102,7 @@ class AddTaskView: UIView {
         plusButtonConstraints()
         textFieldDeadLineConstraints()
         textFieldStartTimeConstraints()
+        datePickerConstraints()
         
     }
     
@@ -112,7 +118,7 @@ class AddTaskView: UIView {
         plusButtonConstraints()
         textFieldDeadLineConstraints()
         textFieldStartTimeConstraints()
-        
+        datePickerConstraints()
     }
     
     private func setViews() {
@@ -125,6 +131,8 @@ class AddTaskView: UIView {
         self.addSubview(plusButton)
         self.addSubview(deadLineTextField)
         self.addSubview(startTimeTextField)
+        self.addSubview(datePicker)
+        
     }
     
     private func arrowButtonConstraints() {
@@ -206,6 +214,14 @@ class AddTaskView: UIView {
         }
     }
     
+    private func datePickerConstraints() {
+        datePicker.snp.makeConstraints { make in
+            make.trailing.equalTo(-80)
+            make.leading.equalTo(80)
+            make.bottom.equalTo(-125)
+        }
+    }
+    
     func backButton(_ target: Any?, action: Selector) {
         arrowButton.addTarget(target, action: action, for: .touchUpInside)
     }
@@ -225,14 +241,16 @@ class AddTaskView: UIView {
     }
     
     func returnStartTime() -> String? {
-//        ????
-        guard startTimeTextField.text?.isEmpty == false else {return nil}
-        return startTimeTextField.text
+        startTimeTextField.text ?? ""
     }
     
     func returnDeadLine() -> String? {
 //        вью же не может проверять пустая она или нет?
         guard deadLineTextField.text?.isEmpty == false else {return nil}
         return deadLineTextField.text
+    }
+
+    func datePickerData() -> Date {
+        datePicker.date
     }
 }

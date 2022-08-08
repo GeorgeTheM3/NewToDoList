@@ -10,7 +10,7 @@ import Foundation
 struct Task {
     var title: String
     var description: String?
-    var startTime: String?
+    var startTime: Date?
     var deadLine: String?
     var status = false
     
