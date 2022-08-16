@@ -48,24 +48,6 @@ class AddTaskView: UIView {
         return tf
     }()
     
-    private(set) lazy var startTimeTextField: UITextField = {
-        let tf = UITextField()
-        tf.layer.cornerRadius = 5
-        tf.layer.borderWidth = 1
-        tf.borderStyle = .roundedRect
-        tf.placeholder = "Enter start date"
-        return tf
-    }()
-    
-    private(set) lazy var deadLineTextField: UITextField = {
-        let tf = UITextField()
-        tf.layer.cornerRadius = 5
-        tf.layer.borderWidth = 1
-        tf.borderStyle = .roundedRect
-        tf.placeholder = "Enter deadline date"
-        return tf
-    }()
-    
     private(set) lazy var textViewDescription: UITextView = {
         let tv = UITextView()
         tv.layer.cornerRadius = 5
@@ -105,8 +87,6 @@ class AddTaskView: UIView {
         textFieldTitleConstraints()
         textViewDescriptionLabelConstraints()
         plusButtonConstraints()
-        textFieldDeadLineConstraints()
-        textFieldStartTimeConstraints()
         datePickerConstraints()
         
     }
@@ -121,8 +101,6 @@ class AddTaskView: UIView {
         textFieldTitleConstraints()
         textViewDescriptionLabelConstraints()
         plusButtonConstraints()
-        textFieldDeadLineConstraints()
-        textFieldStartTimeConstraints()
         datePickerConstraints()
     }
     
@@ -134,8 +112,6 @@ class AddTaskView: UIView {
         self.addSubview(textfieldTitle)
         self.addSubview(textViewDescription)
         self.addSubview(plusButton)
-        self.addSubview(deadLineTextField)
-        self.addSubview(startTimeTextField)
         self.addSubview(datePicker)
         
     }
@@ -151,6 +127,7 @@ class AddTaskView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.bottom.equalTo(-717)
             make.leading.equalTo(63)
+            make.trailing.equalTo(-63)
             make.height.equalTo(15)
             make.width.equalTo(25)
         }
@@ -160,6 +137,7 @@ class AddTaskView: UIView {
         descriptionLabel.snp.makeConstraints { make in
             make.bottom.equalTo(-631)
             make.leading.equalTo(63)
+            make.trailing.equalTo(-63)
             make.height.equalTo(15)
             make.width.equalTo(63)
         }
@@ -169,6 +147,7 @@ class AddTaskView: UIView {
         textfieldTitle.snp.makeConstraints { make in
             make.bottom.equalTo(-667)
             make.leading.equalTo(63)
+            make.trailing.equalTo(-63)
             make.height.equalTo(50)
             make.width.equalTo(264)
         }
@@ -178,6 +157,7 @@ class AddTaskView: UIView {
         textViewDescription.snp.makeConstraints { make in
             make.bottom.equalTo(-300)
             make.leading.equalTo(63)
+            make.trailing.equalTo(-63)
             make.height.equalTo(327)
             make.width.equalTo(264)
         }
@@ -201,29 +181,13 @@ class AddTaskView: UIView {
         }
     }
     
-    private func textFieldStartTimeConstraints() {
-        startTimeTextField.snp.makeConstraints { make in
-            make.bottom.equalTo(-235)
-            make.leading.equalTo(63)
-            make.trailing.equalTo(-63)
-            make.height.equalTo(55)
-        }
-    }
-    
-    private func textFieldDeadLineConstraints() {
-        deadLineTextField.snp.makeConstraints { make in
-            make.bottom.equalTo(-170)
-            make.leading.equalTo(63)
-            make.trailing.equalTo(-63)
-            make.height.equalTo(55)
-        }
-    }
-    
     private func datePickerConstraints() {
         datePicker.snp.makeConstraints { make in
-            make.trailing.equalTo(-80)
-            make.leading.equalTo(80)
-            make.bottom.equalTo(-125)
+            make.bottom.equalTo(-235)
+            make.leading.equalTo(self.textViewDescription)
+//            make.trailing.equalTo(self.textViewDescription)
+            make.width.equalTo(self.textViewDescription.snp.width)
+            make.height.equalTo(55)
         }
     }
     

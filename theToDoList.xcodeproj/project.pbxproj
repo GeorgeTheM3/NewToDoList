@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5E06B07B289C0F97003C20DD /* Model Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06B07A289C0F97003C20DD /* Model Users.swift */; };
 		5E06B07D289C0FA9003C20DD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E06B07C289C0FA9003C20DD /* User.swift */; };
+		5E57D2F928AC2BCD009C0EB6 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57D2F828AC2BCD009C0EB6 /* StartView.swift */; };
+		5E57D2FB28AC2BD9009C0EB6 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57D2FA28AC2BD9009C0EB6 /* StartVC.swift */; };
 		5E97B1B9288D3E8B00940720 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E97B1B8288D3E8B00940720 /* SignUpVC.swift */; };
 		5E9C0F24288FF73900381551 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C0F23288FF73900381551 /* TasksView.swift */; };
 		5E9C0F26288FF78500381551 /* TasksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C0F25288FF78500381551 /* TasksVC.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		5E06B07A289C0F97003C20DD /* Model Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model Users.swift"; sourceTree = "<group>"; };
 		5E06B07C289C0FA9003C20DD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5E57D2F828AC2BCD009C0EB6 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		5E57D2FA28AC2BD9009C0EB6 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		5E97B1B8288D3E8B00940720 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		5E9C0F23288FF73900381551 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		5E9C0F25288FF78500381551 /* TasksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksVC.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 		5E9C0F20288FE03B00381551 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5E57D2F828AC2BCD009C0EB6 /* StartView.swift */,
 				5EACAE25288F0C4B00D9E9D7 /* SignUpView.swift */,
 				5EF39E90288D1E9C0091A777 /* SignInView.swift */,
 				5E9C0F23288FF73900381551 /* TasksView.swift */,
@@ -88,6 +93,7 @@
 		5E9C0F21288FE04A00381551 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5E57D2FA28AC2BD9009C0EB6 /* StartVC.swift */,
 				5E97B1B8288D3E8B00940720 /* SignUpVC.swift */,
 				5EAAD0A0288DC38D00F0E79A /* SignInVC.swift */,
 				5E9C0F25288FF78500381551 /* TasksVC.swift */,
@@ -284,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E9C0F28289002C400381551 /* AddTaskView.swift in Sources */,
+				5E57D2F928AC2BCD009C0EB6 /* StartView.swift in Sources */,
 				5EACAE26288F0C4B00D9E9D7 /* SignUpView.swift in Sources */,
 				5E9C0F24288FF73900381551 /* TasksView.swift in Sources */,
 				5EAAD09C288DBDFF00F0E79A /* Model Tasks.swift in Sources */,
@@ -297,6 +304,7 @@
 				5E9C0F2A289002E800381551 /* AddTaskVC.swift in Sources */,
 				5EAAD0A1288DC38D00F0E79A /* SignInVC.swift in Sources */,
 				5E9C0F26288FF78500381551 /* TasksVC.swift in Sources */,
+				5E57D2FB28AC2BD9009C0EB6 /* StartVC.swift in Sources */,
 				5EF39E8F288D1E9C0091A777 /* SceneDelegate.swift in Sources */,
 				5EAAD09F288DBEA000F0E79A /* LocalStore.swift in Sources */,
 				5E9C0F2E289028FE00381551 /* InfoTaskVC.swift in Sources */,
@@ -454,7 +462,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = georgeM3.theToDo;
+				PRODUCT_BUNDLE_IDENTIFIER = georgeM3.theT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -484,7 +492,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = georgeM3.theToDo;
+				PRODUCT_BUNDLE_IDENTIFIER = georgeM3.theT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

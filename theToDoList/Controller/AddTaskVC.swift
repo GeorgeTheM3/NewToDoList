@@ -55,14 +55,6 @@ class AddTaskVC: UIViewController {
         return addTaskView.textViewDescription.text
     }
     
-    private func returnStartTime() -> String? {
-        addTaskView.startTimeTextField.text ?? ""
-    }
-    
-    private func returnDeadLine() -> String? {
-        guard addTaskView.deadLineTextField.text?.isEmpty == false else {return nil}
-        return addTaskView.deadLineTextField.text
-    }
 
     private func datePickerData() -> Date {
         addTaskView.datePicker.date

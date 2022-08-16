@@ -58,9 +58,9 @@ class InfoTaskView: UIView {
         return label
     }()
     
-    private lazy var endLabal: UILabel = {
+    private lazy var endLabel: UILabel = {
         let label = UILabel()
-        label.text = "Deadline:"
+        label.text = "D-Line:"
         label.textColor = .white
         label.font = UIFont(name: "AlNile-Bold", size: 20)
         return label
@@ -68,7 +68,6 @@ class InfoTaskView: UIView {
     
     private(set) lazy var descriptionView: UITextView = {
         let tv = UITextView()
-        tv.text = "A lot of words and something else bla bla bla"
         tv.font = UIFont(name: "Al Nile", size: 20)
         tv.isEditable = false
         return tv
@@ -176,15 +175,15 @@ class InfoTaskView: UIView {
     
     private func deadLineConstarints() {
         deadLineTime.snp.makeConstraints { make in
-            make.bottom.equalTo(-129)
+            make.bottom.equalTo(-124)
             make.trailing.equalTo(-61)
             make.height.equalTo(50)
         }
     }
     
     private func endConstarints() {
-        endLabal.snp.makeConstraints { make in
-            make.bottom.equalTo(-125)
+        endLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(-120)
             make.leading.equalTo(65)
             make.height.equalTo(50)
         }
@@ -199,7 +198,7 @@ class InfoTaskView: UIView {
         self.addSubview(doneButton)
         self.addSubview(deadLineTime)
         self.addSubview(startTime)
-        self.addSubview(endLabal)
+        self.addSubview(endLabel)
         self.addSubview(startLabel)
     }
 }

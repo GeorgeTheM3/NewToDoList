@@ -91,6 +91,7 @@ class SignInView: UIView {
     private lazy var backgroundImage: UIImageView = {
         let bg = UIImageView()
         bg.image = UIImage(named: "fon")
+        bg.contentMode = .scaleAspectFill
         bg.translatesAutoresizingMaskIntoConstraints = false
         return bg
     }()

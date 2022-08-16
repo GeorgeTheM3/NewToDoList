@@ -29,19 +29,16 @@ class SignInVC: UIViewController {
         super.loadView()
         self.view = SignInView()
         addExampleTasks()
-        print(tasksArray.arrayTasks)
     }
     
     @objc private func goToSignUpView() {
         let view = SignUpVC()
-        view.modalPresentationStyle = .fullScreen
-        present(view, animated: true)
+        navigationController?.pushViewController(view, animated: true)
         }
     
     private func goToTasks() {
         let view = TasksVC()
-        view.modalPresentationStyle = .fullScreen
-        present(view, animated: true)
+        navigationController?.pushViewController(view, animated: true)
         }
     
     private func getUserNameAndPassword() {
