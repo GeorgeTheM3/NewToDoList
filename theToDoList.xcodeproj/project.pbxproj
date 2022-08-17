@@ -23,7 +23,7 @@
 		5EAAD09F288DBEA000F0E79A /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAAD09E288DBEA000F0E79A /* LocalStore.swift */; };
 		5EAAD0A1288DC38D00F0E79A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAAD0A0288DC38D00F0E79A /* SignInVC.swift */; };
 		5EABD40C2897FE0F00F80309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EABD40B2897FE0F00F80309 /* Main.storyboard */; };
-		5EACAE26288F0C4B00D9E9D7 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EACAE25288F0C4B00D9E9D7 /* SignUpView.swift */; };
+		5EACAE26288F0C4B00D9E9D7 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EACAE25288F0C4B00D9E9D7 /* CreateView.swift */; };
 		5EC8A43D289D1BA5003365C6 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC8A43C289D1BA5003365C6 /* CustomCell.swift */; };
 		5EF39E8D288D1E9C0091A777 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF39E8C288D1E9C0091A777 /* AppDelegate.swift */; };
 		5EF39E8F288D1E9C0091A777 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF39E8E288D1E9C0091A777 /* SceneDelegate.swift */; };
@@ -50,7 +50,7 @@
 		5EAAD09E288DBEA000F0E79A /* LocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStore.swift; sourceTree = "<group>"; };
 		5EAAD0A0288DC38D00F0E79A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		5EABD40B2897FE0F00F80309 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		5EACAE25288F0C4B00D9E9D7 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		5EACAE25288F0C4B00D9E9D7 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		5EC8A43C289D1BA5003365C6 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		5EF39E89288D1E9C0091A777 /* theToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF39E8C288D1E9C0091A777 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				5E57D2F828AC2BCD009C0EB6 /* StartView.swift */,
-				5EACAE25288F0C4B00D9E9D7 /* SignUpView.swift */,
+				5EACAE25288F0C4B00D9E9D7 /* CreateView.swift */,
 				5EF39E90288D1E9C0091A777 /* SignInView.swift */,
 				5E9C0F23288FF73900381551 /* TasksView.swift */,
 				5E9C0F27289002C400381551 /* AddTaskView.swift */,
@@ -291,7 +291,7 @@
 			files = (
 				5E9C0F28289002C400381551 /* AddTaskView.swift in Sources */,
 				5E57D2F928AC2BCD009C0EB6 /* StartView.swift in Sources */,
-				5EACAE26288F0C4B00D9E9D7 /* SignUpView.swift in Sources */,
+				5EACAE26288F0C4B00D9E9D7 /* CreateView.swift in Sources */,
 				5E9C0F24288FF73900381551 /* TasksView.swift in Sources */,
 				5EAAD09C288DBDFF00F0E79A /* Model Tasks.swift in Sources */,
 				5EC8A43D289D1BA5003365C6 /* CustomCell.swift in Sources */,

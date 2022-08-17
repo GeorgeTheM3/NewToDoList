@@ -7,12 +7,12 @@
 
 import UIKit
 
-class SignUpView: UIView {
+class CreateView: UIView {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name"
-        label.textColor = .white
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.font = UIFont(name: "Al Nile" , size: 12)
@@ -22,7 +22,7 @@ class SignUpView: UIView {
     private lazy var passwordLabel: UILabel = {
         let password = UILabel()
         password.text = "Password"
-        password.textColor = .white
+        password.textColor = .black
         password.translatesAutoresizingMaskIntoConstraints = false
         password.backgroundColor = .clear
         password.font = UIFont(name: "Al Nile", size: 12)

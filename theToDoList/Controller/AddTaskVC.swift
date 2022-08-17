@@ -39,7 +39,7 @@ class AddTaskVC: UIViewController {
     }
     
     private func backButton(_ target: Any?, action: Selector) {
-        addTaskView.arrowButton.addTarget(target, action: action, for: .touchUpInside)
+        addTaskView.closeButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
     private func plusButton(_ target: Any?, action: Selector) {
@@ -54,7 +54,6 @@ class AddTaskVC: UIViewController {
     private func returnDiscription() -> String? {
         return addTaskView.textViewDescription.text
     }
-    
 
     private func datePickerData() -> Date {
         addTaskView.datePicker.date

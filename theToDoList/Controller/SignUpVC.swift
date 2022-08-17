@@ -12,8 +12,8 @@ class SignUpVC: UIViewController {
     private lazy var userName: String = ""
     private lazy var userPassword: String = ""
     
-    private var signUpView: SignUpView {
-        return self.view as! SignUpView
+    private var signUpView: CreateView {
+        return self.view as! CreateView
     }
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class SignUpVC: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.view = SignUpView()
+        self.view = CreateView()
     }
     
     @objc private func goBack() {

@@ -153,7 +153,6 @@ extension TasksVC: UITableViewDelegate {
             vc.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
             vc.buttonOff()
             vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .flipHorizontal
             present(vc, animated: true)
         case 1:
             let title = tasksArray.arrayTasks[indexPath.row].title
@@ -163,7 +162,6 @@ extension TasksVC: UITableViewDelegate {
             let vc = InfoTaskVC()
             vc.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
             vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .flipHorizontal
             present(vc, animated: true)
         default:
             break

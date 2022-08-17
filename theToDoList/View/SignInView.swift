@@ -13,7 +13,7 @@ class SignInView: UIView {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name"
-        label.textColor = .white
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.font = UIFont(name: "Al Nile" , size: 12)
@@ -23,7 +23,7 @@ class SignInView: UIView {
     private lazy var passwordLabel: UILabel = {
         let password = UILabel()
         password.text = "Password"
-        password.textColor = .white
+        password.textColor = .black
         password.translatesAutoresizingMaskIntoConstraints = false
         password.backgroundColor = .clear
         password.font = UIFont(name: "Al Nile", size: 12)
@@ -52,7 +52,7 @@ class SignInView: UIView {
         let button = UIButton()
         button.setTitle("Forget password", for: .normal)
         button.setTitleColor(.orange, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Al Nile", size: 12)
+        button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 14)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -159,7 +159,6 @@ class SignInView: UIView {
     
     private func forgetPasswordButtonConstraints() {
         self.forgetPasswordButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        self.forgetPasswordButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
         self.forgetPasswordButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -347).isActive = true
         self.forgetPasswordButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 65).isActive = true
     }
