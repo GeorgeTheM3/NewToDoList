@@ -62,6 +62,7 @@ class SignUpView: UIView {
         let button = UIButton()
 //        button.setImage(UIImage(named: "backArrowWhite"), for: .normal)
         button.setTitle("Close", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

@@ -18,7 +18,7 @@ class AddTaskView: UIView {
     
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "fon")
+        image.image = UIImage(named: "fon-10.2")
         return image
     }()
     

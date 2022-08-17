@@ -22,7 +22,9 @@ class StartVC: UIViewController {
         super.viewDidLoad()
         signInButtonTarget(self, action: #selector(goToSignInView))
         createNewAccButtonTarget(self, action: #selector(goToSignUpView))
-        
+//        для примера
+        users.appendNewUser(name: "2", password: "3")
+        addExampleTasks()
     }
     
     @objc private func goToSignInView() {

@@ -29,7 +29,6 @@ class SignInVC: UIViewController {
     override func loadView() {
         super.loadView()
         self.view = SignInView()
-        addExampleTasks()
     }
     
     @objc private func goToSignUpView() {
@@ -56,7 +55,7 @@ class SignInVC: UIViewController {
     
     @objc private func checkUser() {
         getUserNameAndPassword()
-        let result = users.checkUserInMemory(name: userName, password: userPassword)
+        let result = users.checkUserInMemory(name: userName)
         if result {
             goToTasks()
         } else {

@@ -13,17 +13,17 @@ class TasksView: UIView {
     private(set) lazy var addTaskButton: UIButton = {
         let button = UIButton()
         button.setTitle("Add task", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 20
-        button.backgroundColor = .white
+        button.backgroundColor = .black
         button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
         return button
     }()
     
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "fon")
-//        image.contentMode = .scaleAspectFill
+        image.image = UIImage(named: "fon-9.2")
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -41,8 +41,8 @@ class TasksView: UIView {
     lazy var tableViewTasks: UITableView = {
         let tv = UITableView()
         tv.register(CustomCell.self, forCellReuseIdentifier: "cell")
-        tv.backgroundColor = UIColor(white: 1, alpha: 0.2)
-//        tv.backgroundView = UIImageView(image: UIImage(named: "fon-4"))
+        tv.backgroundColor = UIColor(white: 1, alpha: 0.3)
+//        tv.backgroundView = UIImageView(image: UIImage(named: "fon-10.1"))
 //        tv.backgroundView?.contentMode = .scaleAspectFill
         return tv
     }()

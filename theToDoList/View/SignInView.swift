@@ -81,7 +81,7 @@ class SignInView: UIView {
     
     private lazy var backgroundImage: UIImageView = {
         let bg = UIImageView()
-        bg.image = UIImage(named: "fon-9.2")
+        bg.image = UIImage(named: "fon-8.1")
         bg.contentMode = .scaleAspectFill
         bg.translatesAutoresizingMaskIntoConstraints = false
         return bg
@@ -91,6 +91,7 @@ class SignInView: UIView {
         let button = UIButton()
 //        button.setImage(UIImage(named: "backArrowWhite"), for: .normal)
         button.setTitle("Close", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

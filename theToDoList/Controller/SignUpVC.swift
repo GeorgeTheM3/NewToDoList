@@ -20,6 +20,7 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
         backButtonTarget(self, action: #selector(goBack))
         signUpButtonTarget(self, action: #selector(appendUser))
+        
     }
     
     override func loadView() {
@@ -38,9 +39,23 @@ class SignUpVC: UIViewController {
     
     @objc private func appendUser() {
         getUserNameAndPassword()
-        users.appendNewUser(name: userName, password: userPassword)
-        print(users.users)
-        dismiss(animated: true)
+        checkUser()
+    }
+    
+    private func checkUser() {
+        let result = users.checkUserInMemory(name: userName)
+        if result {
+            return
+        } else {
+            users.appendNewUser(name: userName, password: userPassword)
+            goToTasks()
+        }
+    }
+    
+    private func goToTasks() {
+        let view = TasksVC()
+        view.modalPresentationStyle = .fullScreen
+        present(view, animated: true)
     }
     
     private func backButtonTarget(_ target: Any?, action: Selector) {

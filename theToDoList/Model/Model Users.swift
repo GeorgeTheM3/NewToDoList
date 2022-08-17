@@ -14,8 +14,8 @@ class Users {
         users.append(User(name: name, password: password))
     }
     
-    func checkUserInMemory(name: String?, password: String?) -> Bool {
-        return users.contains(where: {$0.name == name && $0.password == password})
+    func checkUserInMemory(name: String?) -> Bool {
+        return users.contains(where: {$0.name == name})
     }
     
     func returnPassword(name: String) -> String {
