@@ -49,25 +49,27 @@ class SignUpView: UIView {
     
     private(set) lazy var signUpButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Sign Up", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 15)
+        button.setTitle("Create", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 20
+        button.backgroundColor = .black
+        button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private(set) lazy var arrowButton: UIButton = {
+    private(set) lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "backArrowWhite"), for: .normal)
+//        button.setImage(UIImage(named: "backArrowWhite"), for: .normal)
+        button.setTitle("Close", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var backgroundImage: UIImageView = {
         let bg = UIImageView()
-        bg.image = UIImage(named: "fon")
+        bg.image = UIImage(named: "fon-8.1")
+        bg.contentMode = .scaleAspectFill
         bg.translatesAutoresizingMaskIntoConstraints = false
         return bg
     }()
@@ -81,7 +83,7 @@ class SignUpView: UIView {
         passwordLabelConstraints()
         textFieldPasswordConstraints()
         signUpButtonConstraints()
-        arrowButtonConstraints()
+        backButtonConstraints()
     }
     
     required init?(coder Decoder: NSCoder) {
@@ -93,7 +95,7 @@ class SignUpView: UIView {
         passwordLabelConstraints()
         textFieldPasswordConstraints()
         signUpButtonConstraints()
-        arrowButtonConstraints()
+        backButtonConstraints()
     }
 
     private func nameLabelConstraints() {
@@ -125,15 +127,15 @@ class SignUpView: UIView {
     }
     
     private func signUpButtonConstraints() {
-        self.signUpButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        self.signUpButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -80).isActive = true
+        self.signUpButton.heightAnchor.constraint(equalToConstant: 42).isActive = true
+        self.signUpButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -120).isActive = true
         self.signUpButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
-        self.signUpButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 80).isActive = true
+        self.signUpButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 120).isActive = true
     }
     
-    private func arrowButtonConstraints() {
-        self.arrowButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
-        self.arrowButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
+    private func backButtonConstraints() {
+        self.backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
+        self.backButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
     }
     
     private func backgroundImageConstarints() {
@@ -149,6 +151,6 @@ class SignUpView: UIView {
         self.addSubview(self.textFieldName)
         self.addSubview(self.textFieldPassword)
         self.addSubview(self.signUpButton)
-        self.addSubview(self.arrowButton)
+        self.addSubview(self.backButton)
     }
 }

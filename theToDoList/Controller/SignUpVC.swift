@@ -44,7 +44,7 @@ class SignUpVC: UIViewController {
     }
     
     private func backButtonTarget(_ target: Any?, action: Selector) {
-        signUpView.arrowButton.addTarget(target, action: action, for: .touchUpInside)
+        signUpView.backButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
     private func signUpButtonTarget(_ target: Any?, action: Selector) {

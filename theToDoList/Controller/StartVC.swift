@@ -27,12 +27,12 @@ class StartVC: UIViewController {
     
     @objc private func goToSignInView() {
         let view = SignInVC()
-        navigationController?.pushViewController(view, animated: true)
+        present(view, animated: true)
         }
     
     @objc private func goToSignUpView() {
         let view = SignUpVC()
-        navigationController?.pushViewController(view, animated: true)
+        present(view, animated: true)
         }
     
     

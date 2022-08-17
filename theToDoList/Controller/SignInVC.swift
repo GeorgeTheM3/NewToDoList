@@ -19,9 +19,10 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUpButtonTarget(self, action: #selector(goToSignUpView))
+//        signUpButtonTarget(self, action: #selector(goToSignUpView))
         signInButtonTarget(self, action: #selector(checkUser))
         forgetButtonTarget(self, action: #selector(forgetPassword))
+        backButtonTarget(self, action: #selector(goBack))
         
     }
     
@@ -33,13 +34,20 @@ class SignInVC: UIViewController {
     
     @objc private func goToSignUpView() {
         let view = SignUpVC()
-        navigationController?.pushViewController(view, animated: true)
+//        navigationController?.pushViewController(view, animated: true)
+        present(view, animated: true)
         }
     
     private func goToTasks() {
         let view = TasksVC()
-        navigationController?.pushViewController(view, animated: true)
+//        navigationController?.pushViewController(view, animated: true)
+        view.modalPresentationStyle = .fullScreen
+        present(view, animated: true)
         }
+    
+    @objc private func goBack() {
+        dismiss(animated: true)
+    }
     
     private func getUserNameAndPassword() {
         userName = getName()
@@ -77,8 +85,12 @@ class SignInVC: UIViewController {
         self.present(alertController,animated: true)
     }
     
-    private func signUpButtonTarget(_ target: Any?, action: Selector) {
-        signInView.signUpButton.addTarget(target, action: action, for: .touchUpInside)
+//    private func signUpButtonTarget(_ target: Any?, action: Selector) {
+//        signInView.signUpButton.addTarget(target, action: action, for: .touchUpInside)
+//    }
+    
+    private func backButtonTarget(_ target: Any?, action: Selector) {
+        signInView.backButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
     private func signInButtonTarget(_ target: Any?, action: Selector) {

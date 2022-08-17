@@ -14,15 +14,16 @@ class TasksView: UIView {
         let button = UIButton()
         button.setTitle("Add task", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 20
         button.backgroundColor = .white
-        button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 15)
+        button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
         return button
     }()
     
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "fon")
+//        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -41,6 +42,8 @@ class TasksView: UIView {
         let tv = UITableView()
         tv.register(CustomCell.self, forCellReuseIdentifier: "cell")
         tv.backgroundColor = UIColor(white: 1, alpha: 0.2)
+//        tv.backgroundView = UIImageView(image: UIImage(named: "fon-4"))
+//        tv.backgroundView?.contentMode = .scaleAspectFill
         return tv
     }()
     
@@ -66,9 +69,9 @@ class TasksView: UIView {
     private func addTaskButtonConstraints() {
         addTaskButton.snp.makeConstraints { make in
             make.bottom.equalTo(-65)
-            make.leading.equalTo(80)
-            make.trailing.equalTo(-81)
-            make.height.equalTo(55)
+            make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
+            make.width.equalTo(120)
+            make.height.equalTo(42)
         }
     }
     
@@ -85,8 +88,7 @@ class TasksView: UIView {
         tableViewTasks.snp.makeConstraints { make in
             make.top.equalTo(133)
             make.width.equalTo(self.safeAreaLayoutGuide)
-            make.height.equalTo(400)
-            make.bottom.equalTo(-165)
+            make.bottom.equalTo(addTaskButton.snp.top).offset(-20)
         }
     }
     

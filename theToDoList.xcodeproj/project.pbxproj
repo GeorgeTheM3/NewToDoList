@@ -150,9 +150,9 @@
 				5EAAD09D288DBE8200F0E79A /* Model */,
 				5E9C0F20288FE03B00381551 /* View */,
 				5E9C0F21288FE04A00381551 /* Controller */,
-				5E9C0F22288FE29200381551 /* Other */,
 				5EF39E95288D1E9D0091A777 /* Assets.xcassets */,
 				5EF39E9A288D1E9D0091A777 /* Info.plist */,
+				5E9C0F22288FE29200381551 /* Other */,
 			);
 			path = theToDoList;
 			sourceTree = "<group>";
