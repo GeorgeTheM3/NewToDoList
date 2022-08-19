@@ -7,5 +7,6 @@ target 'theToDoList' do
 
   # Pods for theToDoList
 pod 'SnapKit', '~> 5.6.0'
+pod 'SwiftLint'
 
 end

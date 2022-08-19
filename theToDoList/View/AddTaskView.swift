@@ -9,38 +9,33 @@ import Foundation
 import UIKit
 
 class AddTaskView: UIView {
-    
     private(set) lazy var closeButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Close", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        return button
+        let view = UIButton()
+        view.setTitle("Close", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        return view
     }()
-    
     private lazy var backgroundImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "fon-10.2")
-        return image
+        let view = UIImageView()
+        view.image = UIImage(named: "fon-10.2")
+        return view
     }()
-    
     private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Title"
-        label.textColor = .black
-        label.backgroundColor = .clear
-        label.font = UIFont(name: "AlNile-Bold" , size: 15)
-        return label
+        let view = UILabel()
+        view.text = "Title"
+        view.textColor = .black
+        view.backgroundColor = .clear
+        view.font = UIFont(name: "AlNile-Bold", size: 15)
+        return view
     }()
-    
     private lazy var deadlineLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Deadline"
-        label.textColor = .black
-        label.backgroundColor = .clear
-        label.font = UIFont(name: "AlNile-Bold" , size: 15)
-        return label
+        let view = UILabel()
+        view.text = "Deadline"
+        view.textColor = .black
+        view.backgroundColor = .clear
+        view.font = UIFont(name: "AlNile-Bold", size: 15)
+        return view
     }()
-    
     private lazy var descriptionLabel: UILabel = {
         let password = UILabel()
         password.text = "Description"
@@ -49,24 +44,21 @@ class AddTaskView: UIView {
         password.font = UIFont(name: "AlNile-Bold", size: 15)
         return password
     }()
-    
     private(set) lazy var textfieldTitle: UITextField = {
-        let tf = UITextField()
-        tf.layer.cornerRadius = 5
-        tf.layer.borderWidth = 1
-        tf.placeholder = "New task"
-        tf.borderStyle = .roundedRect
-        return tf
+        let view = UITextField()
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 1
+        view.placeholder = "New task"
+        view.borderStyle = .roundedRect
+        return view
     }()
-    
     private(set) lazy var textViewDescription: UITextView = {
-        let tv = UITextView()
-        tv.layer.cornerRadius = 5
-        tv.layer.borderWidth = 1
-        tv.font = UIFont(name: "SystemFont-Regular", size: 20)
-        return tv
+        let view = UITextView()
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 1
+        view.font = UIFont(name: "SystemFont-Regular", size: 20)
+        return view
     }()
-    
     private(set) lazy var plusButton: UIButton = {
         let button = UIButton()
         button.setTitle("Add", for: .normal)
@@ -76,18 +68,15 @@ class AddTaskView: UIView {
         button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
         return button
     }()
-    
     private(set) lazy var datePicker: UIDatePicker = {
-        let dp = UIDatePicker()
-        return dp
+        let view = UIDatePicker()
+        return view
     }()
-    
     private(set) lazy var datePickerStart: UIDatePicker = {
-        let dp = UIDatePicker()
-        dp.isHidden = true
-        return dp
+        let view = UIDatePicker()
+        view.isHidden = true
+        return view
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setViews()
@@ -100,11 +89,9 @@ class AddTaskView: UIView {
         plusButtonConstraints()
         datePickerConstraints()
         deadlineLebaleConstraints()
-        
     }
-    
-    required init?(coder Decoder: NSCoder) {
-        super.init(coder: Decoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         setViews()
         arrowButtonConstraints()
         backgroundImageConstarints()
@@ -116,7 +103,6 @@ class AddTaskView: UIView {
         datePickerConstraints()
         deadlineLebaleConstraints()
     }
-    
     private func setViews() {
         self.addSubview(backgroundImage)
         self.addSubview(closeButton)
@@ -127,16 +113,13 @@ class AddTaskView: UIView {
         self.addSubview(plusButton)
         self.addSubview(datePicker)
         addSubview(deadlineLabel)
-        
     }
-    
     private func arrowButtonConstraints() {
         closeButton.snp.makeConstraints { make in
             make.top.equalTo(50)
             make.leading.equalTo(15)
         }
     }
-    
     private func titleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(60)
@@ -145,7 +128,6 @@ class AddTaskView: UIView {
             make.height.equalTo(20)
         }
     }
-
     private func textFieldTitleConstraints() {
         textfieldTitle.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom)
@@ -155,7 +137,6 @@ class AddTaskView: UIView {
             make.width.equalTo(264)
         }
     }
-    
     private func deadlineLebaleConstraints() {
         deadlineLabel.snp.makeConstraints { make in
             make.top.equalTo(textfieldTitle.snp.bottom).offset(20)
@@ -164,14 +145,12 @@ class AddTaskView: UIView {
             make.height.equalTo(20)
         }
     }
-    
     private func datePickerConstraints() {
         datePicker.snp.makeConstraints { make in
             make.top.equalTo(deadlineLabel.snp.bottom)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
         }
     }
-    
     private func descriptionLabelConstraints() {
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(datePicker.snp.bottom).offset(20)
@@ -181,7 +160,6 @@ class AddTaskView: UIView {
             make.width.equalTo(63)
         }
     }
-    
     private func textViewDescriptionLabelConstraints() {
         textViewDescription.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom)
@@ -191,8 +169,6 @@ class AddTaskView: UIView {
             make.width.equalTo(264)
         }
     }
-    
-    
     private func backgroundImageConstarints() {
         backgroundImage.snp.makeConstraints { make in
             make.leading.equalTo(0)
@@ -201,7 +177,6 @@ class AddTaskView: UIView {
             make.bottom.equalTo(0)
         }
     }
-    
     private func plusButtonConstraints() {
         plusButton.snp.makeConstraints { make in
             make.bottom.equalTo(-65)

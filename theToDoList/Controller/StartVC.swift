@@ -10,14 +10,14 @@ import UIKit
 
 class StartVC: UIViewController {
     private var startView: StartView {
-        return self.view as! StartView
+        guard let view = self.view as? StartView else { return StartView()}
+        return view
     }
     
     override func loadView() {
         super.loadView()
         self.view = StartView()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         signInButtonTarget(self, action: #selector(goToSignInView))
@@ -26,24 +26,18 @@ class StartVC: UIViewController {
         users.appendNewUser(name: "2", password: "3")
         addExampleTasks()
     }
-    
     @objc private func goToSignInView() {
         let view = SignInVC()
         present(view, animated: true)
         }
-    
     @objc private func goToSignUpView() {
-        let view = SignUpVC()
+        let view = CreateVC()
         present(view, animated: true)
         }
-    
-    
     private func signInButtonTarget(_ target: Any?, action: Selector) {
         startView.signInButton.addTarget(target, action: action, for: .touchUpInside)
     }
-    
     private func createNewAccButtonTarget(_ target: Any?, action: Selector) {
         startView.newAccountButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }
-

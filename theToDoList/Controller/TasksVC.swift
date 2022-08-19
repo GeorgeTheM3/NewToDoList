@@ -10,48 +10,48 @@ import UIKit
 class TasksVC: UIViewController {
 
     private var tasksView: TasksView {
-        return self.view as! TasksView
+        guard let view = self.view as? TasksView else { return TasksView()}
+        return view
     }
-    
     override func loadView() {
         super.loadView()
         self.view = TasksView()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tasksView.tableViewTasks.dataSource = self
         tasksView.tableViewTasks.delegate = self
         toTaskView(self, action: #selector(toAddTaskView))
+        logOut(self, action: #selector(logOutToStart))
         segmentedCont(self, action: #selector(changeTasks))
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tasksArray.getReadyTasks()
         tasksView.tableViewTasks.reloadData()
     }
-    
     @objc private func toAddTaskView() {
-        let vc = AddTaskVC()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        let controller = AddTaskVC()
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
     }
-    
-    @objc private func changeTasks(_ segmentedControl: UISegmentedControl){
+    @objc private func changeTasks(_ segmentedControl: UISegmentedControl) {
         tasksView.tableViewTasks.reloadData()
     }
-    
-    
+    private func logOut(_ target: Any?, action: Selector) {
+        tasksView.logOutButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    @objc private func logOutToStart() {
+        dismiss(animated: true)
+    }
    private func toTaskView(_ target: Any?, action: Selector) {
         tasksView.addTaskButton.addTarget(target, action: action, for: .touchUpInside)
     }
-    
     private func segmentedCont(_ target: Any?, action: Selector) {
         tasksView.segmentedControl.addTarget(target, action: action, for: .valueChanged)
     }
 }
-//MARK: TableView DataSourse
+// MARK: TableView DataSourse
 extension TasksVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let segmentedControlIndex = tasksView.segmentedControl.selectedSegmentIndex
@@ -63,9 +63,9 @@ extension TasksVC: UITableViewDataSource {
         default: return 0
         }
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as! CustomCell
+        let standartCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = standartCell as? CustomCell else { return standartCell}
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 10
         
@@ -87,8 +87,8 @@ extension TasksVC: UITableViewDataSource {
             return cell
         }
     }
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let segmentedControlIndex = self.tasksView.segmentedControl.selectedSegmentIndex
         switch segmentedControlIndex {
         case 0:
@@ -101,9 +101,8 @@ extension TasksVC: UITableViewDataSource {
             return nil
         }
     }
-    
     func doneAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "Done") { (action, view, complition) in
+        let action = UIContextualAction(style: .destructive, title: "Done") { (_, _, _) in
             tasksArray.arrayTasks[indexPath.row].changeStatus()
             tasksArray.getReadyTasks()
             self.tasksView.tableViewTasks.reloadData()
@@ -112,9 +111,8 @@ extension TasksVC: UITableViewDataSource {
         action.image = UIImage(named: "done")
         return action
     }
-    
     func inProgressAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "In Progress") { (action, view, complition) in
+        let action = UIContextualAction(style: .destructive, title: "In Progress") { (_, _, _) in
             tasksArray.readyTasks[indexPath.row].changeStatusFalse()
             tasksArray.getInProgressTasks()
             self.tasksView.tableViewTasks.reloadData()
@@ -123,8 +121,9 @@ extension TasksVC: UITableViewDataSource {
         action.image = UIImage(named: "forwardArrow")
         return action
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         let segmentedControlIndex = self.tasksView.segmentedControl.selectedSegmentIndex
         switch segmentedControlIndex {
@@ -139,7 +138,7 @@ extension TasksVC: UITableViewDataSource {
     }
 }
 
-//MARK: TableView Delegate
+// MARK: TableView Delegate
 extension TasksVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let segmentedControlIndex = tasksView.segmentedControl.selectedSegmentIndex
@@ -149,25 +148,24 @@ extension TasksVC: UITableViewDelegate {
             let description = tasksArray.readyTasks[indexPath.row].description
             let startTime = tasksArray.readyTasks[indexPath.row].startTime
             let endTime = tasksArray.readyTasks[indexPath.row].deadLine
-            let vc = InfoTaskVC()
-            vc.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
-            vc.buttonOff()
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            let controller = InfoTaskVC()
+            controller.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
+            controller.buttonOff()
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: true)
         case 1:
             let title = tasksArray.arrayTasks[indexPath.row].title
             let description = tasksArray.arrayTasks[indexPath.row].description
             let startTime = tasksArray.arrayTasks[indexPath.row].startTime
             let endTime = tasksArray.arrayTasks[indexPath.row].deadLine
-            let vc = InfoTaskVC()
-            vc.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            let controller = InfoTaskVC()
+            controller.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: true)
         default:
             break
         }
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         50
     }

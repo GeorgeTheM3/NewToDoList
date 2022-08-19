@@ -11,7 +11,8 @@ import UIKit
 class AddTaskVC: UIViewController {
     
     private var addTaskView: AddTaskView {
-        return self.view as! AddTaskView
+        guard let view = self.view as? AddTaskView else { return AddTaskView()}
+        return view
     }
     
     override func loadView() {

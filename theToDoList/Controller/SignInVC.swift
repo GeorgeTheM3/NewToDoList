@@ -14,7 +14,8 @@ class SignInVC: UIViewController {
     private lazy var userPassword: String? = ""
     
     private var signInView: SignInView {
-        return self.view as! SignInView
+        guard let view = self.view as? SignInView else { return SignInView()}
+        return view
     }
     
     override func viewDidLoad() {
@@ -32,7 +33,7 @@ class SignInVC: UIViewController {
     }
     
     @objc private func goToSignUpView() {
-        let view = SignUpVC()
+        let view = CreateVC()
 //        navigationController?.pushViewController(view, animated: true)
         present(view, animated: true)
         }

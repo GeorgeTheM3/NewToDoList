@@ -11,30 +11,29 @@ import SnapKit
 
 class StartView: UIView {
     private lazy var imageView: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "fon-2")
-        img.contentMode = .scaleAspectFill
-        return img
+        let view = UIImageView()
+        view.image = UIImage(named: "fon-2")
+        view.contentMode = .scaleAspectFill
+        return view
     }()
-    
     private(set) lazy var signInButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Sign In", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 20
-        button.backgroundColor = .black
-        button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
-        return button
+        let view = UIButton()
+        view.setTitle("Sign In", for: .normal)
+        view.setTitleColor(.white, for: .normal)
+        view.layer.cornerRadius = 20
+        view.backgroundColor = .black
+        view.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
+        return view
     }()
     
     private(set) lazy var newAccountButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Create an Account", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 20
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
-        return button
+        let view = UIButton()
+        view.setTitle("Create an Account", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        view.layer.cornerRadius = 20
+        view.backgroundColor = .white
+        view.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
+        return view
     }()
     
     override init(frame: CGRect) {
@@ -44,22 +43,18 @@ class StartView: UIView {
         setNewAccountButton()
         setSignInButton()
     }
-    
-    required init?(coder Decoder: NSCoder) {
-        super.init(coder: Decoder)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         addViews()
         setImageView()
         setNewAccountButton()
         setSignInButton()
     }
-    
     private func addViews() {
         addSubview(imageView)
         addSubview(newAccountButton)
         addSubview(signInButton)
-        
     }
-    
     private func setImageView() {
         imageView.snp.makeConstraints { make in
             make.width.equalTo(safeAreaLayoutGuide)
@@ -68,8 +63,7 @@ class StartView: UIView {
 
         }
     }
-    
-    private func setNewAccountButton(){
+    private func setNewAccountButton() {
         newAccountButton.snp.makeConstraints { make in
             make.bottom.equalTo(signInButton.snp.top).offset(-20)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
@@ -77,8 +71,7 @@ class StartView: UIView {
             make.height.equalTo(42)
         }
     }
-    
-    private func setSignInButton(){
+    private func setSignInButton() {
         signInButton.snp.makeConstraints { make in
             make.width.equalTo(150)
             make.height.equalTo(42)

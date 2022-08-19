@@ -17,7 +17,8 @@ class InfoTaskVC: UIViewController {
     private lazy var endTime: String? = ""
     
     private var infoTaskView: InfoTaskView {
-        return self.view as! InfoTaskView
+        guard let view = self.view as? InfoTaskView else { return InfoTaskView()}
+        return view
     }
     
     override func loadView() {
