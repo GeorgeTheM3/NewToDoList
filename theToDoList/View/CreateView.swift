@@ -38,6 +38,7 @@ class CreateView: UIView {
         let view = UITextField()
         view.layer.cornerRadius = 5
         view.layer.borderWidth = 1
+        view.isSecureTextEntry = true
         view.borderStyle = .roundedRect
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -54,9 +55,11 @@ class CreateView: UIView {
     }()
     private(set) lazy var backButton: UIButton = {
         let view = UIButton()
-//        button.setImage(UIImage(named: "backArrowWhite"), for: .normal)
         view.setTitle("Close", for: .normal)
-        view.setTitleColor(.black, for: .normal)
+        view.backgroundColor = .black
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        view.setTitleColor(.white, for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -120,6 +123,7 @@ class CreateView: UIView {
     private func backButtonConstraints() {
         backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
         backButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 70).isActive = true
     }
     private func backgroundImageConstarints() {
         self.backgroundImage.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true

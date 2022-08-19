@@ -42,7 +42,8 @@ class CreateVC: UIViewController {
             users.appendNewUser(name: userName, password: userPassword)
             goToTasks()
         }
-    }    
+    }
+
     private func goToTasks() {
         let view = TasksVC()
         view.modalPresentationStyle = .fullScreen

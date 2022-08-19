@@ -64,7 +64,7 @@ class InfoTaskVC: UIViewController {
     
     
     private func backButton(_ target: Any?, action: Selector) {
-        infoTaskView.arrowButton.addTarget(target, action: action, for: .touchUpInside)
+        infoTaskView.backButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
     private func deleteButton(_ target: Any?, action: Selector) {

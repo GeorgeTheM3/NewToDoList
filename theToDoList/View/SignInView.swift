@@ -27,7 +27,7 @@ class SignInView: UIView {
         view.font = UIFont(name: "AlNile-Bold", size: 15)
         return view
     }()
-    
+
     private(set) lazy var textFieldName: UITextField = {
         let view = UITextField()
         view.layer.cornerRadius = 5
@@ -36,14 +36,17 @@ class SignInView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
     private(set) lazy var textFieldPassword: UITextField = {
         let view = UITextField()
         view.layer.cornerRadius = 5
         view.layer.borderWidth = 1
+        view.isSecureTextEntry = true
         view.borderStyle = .roundedRect
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
     private(set) lazy var forgetPasswordButton: UIButton = {
         let view = UIButton()
         view.setTitle("Forget password", for: .normal)
@@ -52,6 +55,7 @@ class SignInView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
     private(set) lazy var signInButton: UIButton = {
         let view = UIButton()
         view.setTitle("Sign In", for: .normal)
@@ -62,6 +66,7 @@ class SignInView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
     private(set) lazy var incorectUserLable: UILabel = {
         let view = UILabel()
         view.isHidden = true
@@ -72,6 +77,7 @@ class SignInView: UIView {
         view.font = UIFont(name: "AlNile-bold", size: 15)
         return view
     }()
+
     private lazy var backgroundImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "fon-8.1")
@@ -79,11 +85,14 @@ class SignInView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
     private(set) lazy var backButton: UIButton = {
         let view = UIButton()
-//        button.setImage(UIImage(named: "backArrowWhite"), for: .normal)
         view.setTitle("Close", for: .normal)
-        view.setTitleColor(.black, for: .normal)
+        view.backgroundColor = .black
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        view.setTitleColor(.white, for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -116,6 +125,7 @@ class SignInView: UIView {
     private func backButtonConstraints() {
         backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
         backButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 70).isActive = true
     }
     private func nameLabelConstraints() {
         nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true

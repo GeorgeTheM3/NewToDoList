@@ -50,7 +50,7 @@ class TasksView: UIView {
         view.backgroundColor = UIColor(white: 1, alpha: 0.3)
         return view
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setViews()
@@ -72,7 +72,7 @@ class TasksView: UIView {
         logOutButtonConstraints()
         logOutImageConstraints()
     }
-    
+
     private func addTaskButtonConstraints() {
         addTaskButton.snp.makeConstraints { make in
             make.bottom.equalTo(-65)

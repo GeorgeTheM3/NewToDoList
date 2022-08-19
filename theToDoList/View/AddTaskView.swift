@@ -11,8 +11,11 @@ import UIKit
 class AddTaskView: UIView {
     private(set) lazy var closeButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Close", for: .normal)
-        view.setTitleColor(.black, for: .normal)
+        view.setTitle("Back", for: .normal)
+        view.backgroundColor = .black
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        view.setTitleColor(.white, for: .normal)
         return view
     }()
     private lazy var backgroundImage: UIImageView = {
@@ -80,7 +83,7 @@ class AddTaskView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setViews()
-        arrowButtonConstraints()
+        backButtonConstraints()
         backgroundImageConstarints()
         titleLabelConstraints()
         descriptionLabelConstraints()
@@ -93,7 +96,7 @@ class AddTaskView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setViews()
-        arrowButtonConstraints()
+        backButtonConstraints()
         backgroundImageConstarints()
         titleLabelConstraints()
         descriptionLabelConstraints()
@@ -114,25 +117,26 @@ class AddTaskView: UIView {
         self.addSubview(datePicker)
         addSubview(deadlineLabel)
     }
-    private func arrowButtonConstraints() {
+    private func backButtonConstraints() {
         closeButton.snp.makeConstraints { make in
             make.top.equalTo(50)
             make.leading.equalTo(15)
+            make.width.equalTo(70)
         }
     }
     private func titleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(60)
-            make.leading.equalTo(63)
-            make.trailing.equalTo(-63)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
             make.height.equalTo(20)
         }
     }
     private func textFieldTitleConstraints() {
         textfieldTitle.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom)
-            make.leading.equalTo(63)
-            make.trailing.equalTo(-63)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
             make.height.equalTo(50)
             make.width.equalTo(264)
         }
@@ -140,22 +144,23 @@ class AddTaskView: UIView {
     private func deadlineLebaleConstraints() {
         deadlineLabel.snp.makeConstraints { make in
             make.top.equalTo(textfieldTitle.snp.bottom).offset(20)
-            make.leading.equalTo(63)
-            make.trailing.equalTo(-63)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
             make.height.equalTo(20)
         }
     }
     private func datePickerConstraints() {
         datePicker.snp.makeConstraints { make in
-            make.top.equalTo(deadlineLabel.snp.bottom)
-            make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
+            make.trailing.equalTo(textfieldTitle.snp.trailing)
+            make.height.equalTo(40)
+            make.centerY.equalTo(deadlineLabel.snp.centerY)
         }
     }
     private func descriptionLabelConstraints() {
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(datePicker.snp.bottom).offset(20)
-            make.leading.equalTo(63)
-            make.trailing.equalTo(-63)
+            make.top.equalTo(deadlineLabel.snp.bottom).offset(20)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
             make.height.equalTo(20)
             make.width.equalTo(63)
         }
@@ -163,8 +168,8 @@ class AddTaskView: UIView {
     private func textViewDescriptionLabelConstraints() {
         textViewDescription.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom)
-            make.leading.equalTo(63)
-            make.trailing.equalTo(-63)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
             make.height.equalTo(327)
             make.width.equalTo(264)
         }

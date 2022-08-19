@@ -56,7 +56,7 @@ class SignInVC: UIViewController {
     
     @objc private func checkUser() {
         getUserNameAndPassword()
-        let result = users.checkUserInMemory(name: userName)
+        let result = users.chechUserPassword(name: userName, password: userPassword)
         if result {
             goToTasks()
         } else {
