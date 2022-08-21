@@ -13,13 +13,12 @@ struct Task {
     var startTime: Date
     var deadLine: Date?
     var status = false
-    
+
     mutating func changeStatus() {
         status = true
     }
-    
+
     mutating func changeStatusFalse() {
         status = false
     }
-    
 }

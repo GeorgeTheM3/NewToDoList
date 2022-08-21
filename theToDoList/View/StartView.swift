@@ -25,7 +25,7 @@ class StartView: UIView {
         view.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
         return view
     }()
-    
+
     private(set) lazy var newAccountButton: UIButton = {
         let view = UIButton()
         view.setTitle("Create an Account", for: .normal)
@@ -35,7 +35,7 @@ class StartView: UIView {
         view.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
         return view
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addViews()

@@ -13,7 +13,6 @@ class StartVC: UIViewController {
         guard let view = self.view as? StartView else { return StartView()}
         return view
     }
-    
     override func loadView() {
         super.loadView()
         self.view = StartView()

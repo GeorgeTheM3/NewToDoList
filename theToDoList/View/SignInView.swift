@@ -17,7 +17,7 @@ class SignInView: UIView {
         view.font = UIFont(name: "AlNile-Bold", size: 15)
         return view
     }()
-    
+
     private lazy var passwordLabel: UILabel = {
         let view = UILabel()
         view.text = "Password"

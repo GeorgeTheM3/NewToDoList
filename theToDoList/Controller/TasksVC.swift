@@ -68,7 +68,7 @@ extension TasksVC: UITableViewDataSource {
         guard let cell = standartCell as? CustomCell else { return standartCell}
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 10
-        
+
         let segmentedControlIndex = tasksView.segmentedControl.selectedSegmentIndex
         switch segmentedControlIndex {
         case 0:

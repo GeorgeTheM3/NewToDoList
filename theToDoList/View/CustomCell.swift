@@ -10,23 +10,23 @@ import UIKit
 import SnapKit
 
 class CustomCell: UITableViewCell {
-    
+
     private(set) lazy var titleLable: UILabel = {
         let label = UILabel()
         return label
     }()
-    
+
     private(set) lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "SystemFont-Regular", size: 13)
         return label
     }()
-    
+
     private(set) lazy var imageCell: UIImageView = {
         let image = UIImageView()
         return image
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setViews()
@@ -34,7 +34,7 @@ class CustomCell: UITableViewCell {
         imageStatusConstraints()
         timeLableContraints()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setViews()
@@ -42,13 +42,13 @@ class CustomCell: UITableViewCell {
         imageStatusConstraints()
         timeLableContraints()
     }
-    
+
     private func setViews() {
         self.contentView.addSubview(titleLable)
         self.contentView.addSubview(imageCell)
         self.contentView.addSubview(timeLabel)
     }
-    
+
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -59,7 +59,7 @@ class CustomCell: UITableViewCell {
             make.height.equalTo(self.contentView)
         }
     }
-    
+
     private func timeLableContraints() {
         timeLabel.snp.makeConstraints { make in
             make.trailing.equalTo(-10)

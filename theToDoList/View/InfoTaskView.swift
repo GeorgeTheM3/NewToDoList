@@ -19,7 +19,7 @@ class InfoTaskView: UIView {
         view.setTitleColor(.white, for: .normal)
         return view
     }()
-    
+
     private(set) lazy var deleteButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "trash"), for: .normal)
@@ -47,7 +47,6 @@ class InfoTaskView: UIView {
         view.layer.cornerRadius = 10
         view.textAlignment = .center
         view.clipsToBounds = true
-        
         view.font = UIFont(name: "AlNile-Bold", size: 20)
         return view
     }()

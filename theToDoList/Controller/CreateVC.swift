@@ -37,11 +37,18 @@ class CreateVC: UIViewController {
     private func checkUser() {
         let result = users.checkUserInMemory(name: userName)
         if result {
-            return
+            errorUser()
         } else {
             users.appendNewUser(name: userName, password: userPassword)
             goToTasks()
         }
+    }
+
+    private func errorUser() {
+    let alertController = UIAlertController(title: "Try another name", message: "user with the same name already exists", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true)
     }
 
     private func goToTasks() {

@@ -18,6 +18,22 @@ class AddTaskView: UIView {
         view.setTitleColor(.white, for: .normal)
         return view
     }()
+
+    private(set) lazy var switchDeadline: UISwitch = {
+        let view = UISwitch()
+        view.isOn = true
+        return view
+    }()
+
+    private lazy var switchLabel: UILabel = {
+        let view = UILabel()
+        view.text = "Deadline status"
+        view.textColor = .black
+        view.backgroundColor = .clear
+        view.font = UIFont(name: "AlNile-Bold", size: 15)
+        return view
+    }()
+
     private lazy var backgroundImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "fon-10.2")
@@ -83,19 +99,28 @@ class AddTaskView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setViews()
-        backButtonConstraints()
-        backgroundImageConstarints()
-        titleLabelConstraints()
-        descriptionLabelConstraints()
-        textFieldTitleConstraints()
-        textViewDescriptionLabelConstraints()
-        plusButtonConstraints()
-        datePickerConstraints()
-        deadlineLebaleConstraints()
+        setConstraints()
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setViews()
+        setConstraints()
+    }
+    private func setViews() {
+        addSubview(backgroundImage)
+        addSubview(closeButton)
+        addSubview(titleLabel)
+        addSubview(descriptionLabel)
+        addSubview(textfieldTitle)
+        addSubview(textViewDescription)
+        addSubview(plusButton)
+        addSubview(datePicker)
+        addSubview(deadlineLabel)
+        addSubview(switchDeadline)
+        addSubview(switchLabel)
+    }
+
+    private func setConstraints() {
         backButtonConstraints()
         backgroundImageConstarints()
         titleLabelConstraints()
@@ -105,17 +130,8 @@ class AddTaskView: UIView {
         plusButtonConstraints()
         datePickerConstraints()
         deadlineLebaleConstraints()
-    }
-    private func setViews() {
-        self.addSubview(backgroundImage)
-        self.addSubview(closeButton)
-        self.addSubview(titleLabel)
-        self.addSubview(descriptionLabel)
-        self.addSubview(textfieldTitle)
-        self.addSubview(textViewDescription)
-        self.addSubview(plusButton)
-        self.addSubview(datePicker)
-        addSubview(deadlineLabel)
+        switchDaedlineConstraints()
+        switchLabelConstraints()
     }
     private func backButtonConstraints() {
         closeButton.snp.makeConstraints { make in
@@ -172,6 +188,20 @@ class AddTaskView: UIView {
             make.trailing.equalTo(-30)
             make.height.equalTo(327)
             make.width.equalTo(264)
+        }
+    }
+
+    private func switchDaedlineConstraints() {
+        switchDeadline.snp.makeConstraints { make in
+            make.leading.equalTo(switchLabel.snp.trailing).offset(15)
+            make.centerY.equalTo(switchLabel.snp.centerY)
+        }
+    }
+
+    private func switchLabelConstraints() {
+        switchLabel.snp.makeConstraints { make in
+            make.leading.equalTo(textViewDescription.snp.leading)
+            make.top.equalTo(textViewDescription.snp.bottom).offset(20)
         }
     }
     private func backgroundImageConstarints() {

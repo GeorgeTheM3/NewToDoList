@@ -34,7 +34,7 @@ class TasksView: UIView {
         image.contentMode = .scaleAspectFill
         return image
     }()
-    
+
     private(set)lazy var segmentedControl: UISegmentedControl = {
         let view = UISegmentedControl()
         view.insertSegment(withTitle: "Ready", at: 0, animated: true)
@@ -61,7 +61,7 @@ class TasksView: UIView {
         logOutButtonConstraints()
         logOutImageConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setViews()

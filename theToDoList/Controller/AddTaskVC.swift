@@ -9,27 +9,27 @@ import Foundation
 import UIKit
 
 class AddTaskVC: UIViewController {
-    
+
     private var addTaskView: AddTaskView {
         guard let view = self.view as? AddTaskView else { return AddTaskView()}
         return view
     }
-    
+
     override func loadView() {
         super.loadView()
         self.view = AddTaskView()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton(self, action: #selector(toTaskView))
         plusButton(self, action: #selector(toTaskViewWithData))
     }
-    
+
     @objc private func toTaskView() {
         dismiss(animated: true)
     }
-    
+
     @objc private func toTaskViewWithData() {
         let title = returnTitle()
         let description = returnDiscription()
@@ -38,20 +38,20 @@ class AddTaskVC: UIViewController {
         tasksArray.appendNewTask(title: title, description: description, start: startTime, end: deadLine)
         dismiss(animated: true)
     }
-    
+
     private func backButton(_ target: Any?, action: Selector) {
         addTaskView.closeButton.addTarget(target, action: action, for: .touchUpInside)
     }
-    
+
     private func plusButton(_ target: Any?, action: Selector) {
         addTaskView.plusButton.addTarget(target, action: action, for: .touchUpInside)
     }
-    
+
     private func returnTitle() -> String {
         guard addTaskView.textfieldTitle.text?.isEmpty == false else {return "No title"}
         return addTaskView.textfieldTitle.text!
     }
-    
+
     private func returnDiscription() -> String? {
         return addTaskView.textViewDescription.text
     }
@@ -59,9 +59,8 @@ class AddTaskVC: UIViewController {
     private func datePickerData() -> Date {
         addTaskView.datePicker.date
     }
-    
+
     private func datePickerStart() -> Date {
         addTaskView.datePickerStart.date
     }
 }
-
