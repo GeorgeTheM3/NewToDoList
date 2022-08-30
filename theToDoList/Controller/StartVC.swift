@@ -26,17 +26,19 @@ class StartVC: UIViewController {
         addExampleTasks()
     }
     @objc private func goToSignInView() {
-        let view = SignInVC()
-        present(view, animated: true)
-        }
+        let controller = SignInVC()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
     @objc private func goToSignUpView() {
-        let view = CreateVC()
-        present(view, animated: true)
-        }
+        let controller = CreateVC()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
     private func signInButtonTarget(_ target: Any?, action: Selector) {
         startView.signInButton.addTarget(target, action: action, for: .touchUpInside)
     }
     private func createNewAccButtonTarget(_ target: Any?, action: Selector) {
-        startView.newAccountButton.addTarget(target, action: action, for: .touchUpInside)
+        startView.createNewAccountButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }

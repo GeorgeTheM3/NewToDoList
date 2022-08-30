@@ -37,4 +37,8 @@ class Tasks {
                 readyTasks.removeAll(where: {$0.title == task.title })
         }
     }
+
+    func checkTaskInMemory(title: String?) -> Bool {
+        return arrayTasks.contains(where: {$0.title == title}) || readyTasks.contains(where: {$0.title == title})
+    }
 }

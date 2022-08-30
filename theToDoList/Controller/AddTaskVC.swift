@@ -32,11 +32,19 @@ class AddTaskVC: UIViewController {
 
     @objc private func toTaskViewWithData() {
         let title = returnTitle()
+        guard !tasksArray.checkTaskInMemory(title: title) else {return uncorectTitle()}
         let description = returnDiscription()
         let startTime = datePickerStart()
         let deadLine = datePickerData()
         tasksArray.appendNewTask(title: title, description: description, start: startTime, end: deadLine)
         dismiss(animated: true)
+    }
+
+    private func uncorectTitle() {
+        let alertController = UIAlertController(title: "Change name", message: "task with the same name is already added", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(action)
+        present(alertController, animated: true)
     }
 
     private func backButton(_ target: Any?, action: Selector) {

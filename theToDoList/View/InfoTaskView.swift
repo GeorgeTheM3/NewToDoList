@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class InfoTaskView: UIView {
-    
     private(set) lazy var backButton: UIButton = {
         let view = UIButton()
         view.setTitle("Back", for: .normal)

@@ -17,6 +17,7 @@ class TasksVC: UIViewController {
         super.loadView()
         self.view = TasksView()
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tasksView.tableViewTasks.dataSource = self
@@ -25,30 +26,59 @@ class TasksVC: UIViewController {
         logOut(self, action: #selector(logOutToStart))
         segmentedCont(self, action: #selector(changeTasks))
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tasksArray.getReadyTasks()
         tasksView.tableViewTasks.reloadData()
     }
+
     @objc private func toAddTaskView() {
         let controller = AddTaskVC()
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
+
     @objc private func changeTasks(_ segmentedControl: UISegmentedControl) {
         tasksView.tableViewTasks.reloadData()
     }
+
     private func logOut(_ target: Any?, action: Selector) {
         tasksView.logOutButton.addTarget(target, action: action, for: .touchUpInside)
     }
+
     @objc private func logOutToStart() {
-        dismiss(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
-   private func toTaskView(_ target: Any?, action: Selector) {
+
+    private func toTaskView(_ target: Any?, action: Selector) {
         tasksView.addTaskButton.addTarget(target, action: action, for: .touchUpInside)
     }
+
     private func segmentedCont(_ target: Any?, action: Selector) {
         tasksView.segmentedControl.addTarget(target, action: action, for: .valueChanged)
+    }
+
+    func doneAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Done") { (_, _, _) in
+            tasksArray.arrayTasks[indexPath.row].changeStatus()
+            tasksArray.getReadyTasks()
+            self.tasksView.tableViewTasks.reloadData()
+        }
+        action.backgroundColor = .lightText
+        action.image = UIImage(named: "done")
+        return action
+    }
+
+    func inProgressAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "In Progress") { (_, _, _) in
+            tasksArray.readyTasks[indexPath.row].changeStatusFalse()
+            tasksArray.getInProgressTasks()
+            self.tasksView.tableViewTasks.reloadData()
+        }
+        action.backgroundColor = .orange
+        action.image = UIImage(named: "forwardArrow")
+        return action
     }
 }
 // MARK: TableView DataSourse
@@ -100,26 +130,6 @@ extension TasksVC: UITableViewDataSource {
         default:
             return nil
         }
-    }
-    func doneAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "Done") { (_, _, _) in
-            tasksArray.arrayTasks[indexPath.row].changeStatus()
-            tasksArray.getReadyTasks()
-            self.tasksView.tableViewTasks.reloadData()
-        }
-        action.backgroundColor = .lightText
-        action.image = UIImage(named: "done")
-        return action
-    }
-    func inProgressAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "In Progress") { (_, _, _) in
-            tasksArray.readyTasks[indexPath.row].changeStatusFalse()
-            tasksArray.getInProgressTasks()
-            self.tasksView.tableViewTasks.reloadData()
-        }
-        action.backgroundColor = .orange
-        action.image = UIImage(named: "forwardArrow")
-        return action
     }
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
