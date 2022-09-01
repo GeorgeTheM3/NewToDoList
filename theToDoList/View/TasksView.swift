@@ -18,16 +18,19 @@ class TasksView: UIView {
         button.titleLabel?.font = UIFont(name: "AlNile-Bold", size: 20)
         return button
     }()
+
     private(set) lazy var logOutButton: UIButton = {
         let view = UIButton()
         return view
     }()
-    private(set) lazy var logOutImage: UIImageView = {
+
+    private lazy var logOutImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "person.crop.circle.fill.badge.xmark")
         view.tintColor = .white
         return view
     }()
+
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "fon-9.2")
@@ -44,7 +47,8 @@ class TasksView: UIView {
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
         return view
     }()
-    lazy var tableViewTasks: UITableView = {
+
+    private(set) lazy var tableViewTasks: UITableView = {
         let view = UITableView()
         view.register(CustomCell.self, forCellReuseIdentifier: "cell")
         view.backgroundColor = UIColor(white: 1, alpha: 0.3)
@@ -53,79 +57,60 @@ class TasksView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setViews()
-        backgroundImageConstarints()
-        segmentedControlConstraints()
-        tableViewTasksConstraints()
-        addTaskButtonConstraints()
-        logOutButtonConstraints()
-        logOutImageConstraints()
+        addViews()
+        setConstraintsViews()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setViews()
-        backgroundImageConstarints()
-        segmentedControlConstraints()
-        tableViewTasksConstraints()
-        addTaskButtonConstraints()
-        logOutButtonConstraints()
-        logOutImageConstraints()
+        addViews()
+        setConstraintsViews()
     }
 
-    private func addTaskButtonConstraints() {
-        addTaskButton.snp.makeConstraints { make in
-            make.bottom.equalTo(-65)
-            make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
-            make.width.equalTo(120)
-            make.height.equalTo(42)
-        }
-    }
-    private func logOutButtonConstraints() {
-        logOutButton.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControl.snp.top)
-            make.trailing.equalTo(-10)
-            make.width.equalTo(40)
-            make.height.equalTo(40)
-        }
-    }
-    private func logOutImageConstraints() {
-        logOutImage.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControl.snp.top)
-            make.trailing.equalTo(-20)
-            make.width.equalTo(40)
-            make.height.equalTo(40)
-        }
-    }
-    private func segmentedControlConstraints() {
-        segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(73)
-            make.leading.equalTo(18)
-            make.trailing.equalTo(-80)
-            make.height.equalTo(40)
-        }
-    }
-    private func tableViewTasksConstraints() {
-        tableViewTasks.snp.makeConstraints { make in
-            make.top.equalTo(133)
-            make.width.equalTo(self.safeAreaLayoutGuide)
-            make.bottom.equalTo(addTaskButton.snp.top).offset(-20)
-        }
-    }
-    private func backgroundImageConstarints() {
-        backgroundImage.snp.makeConstraints { make in
-            make.leading.equalTo(0)
-            make.trailing.equalTo(0)
-            make.top.equalTo(0)
-            make.bottom.equalTo(0)
-        }
-    }
-    func setViews() {
+    private func addViews() {
         addSubview(backgroundImage)
         addSubview(addTaskButton)
         addSubview(segmentedControl)
         addSubview(tableViewTasks)
         addSubview(logOutImage)
         addSubview(logOutButton)
+    }
+
+    private func setConstraintsViews() {
+        addTaskButton.snp.makeConstraints { make in
+            make.bottom.equalTo(-65)
+            make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
+            make.width.equalTo(120)
+            make.height.equalTo(42)
+        }
+        logOutButton.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.top)
+            make.trailing.equalTo(-10)
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+        }
+        logOutImage.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.top)
+            make.trailing.equalTo(-20)
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+        }
+        segmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.leading.equalTo(18)
+            make.trailing.equalTo(-80)
+            make.height.equalTo(40)
+        }
+        tableViewTasks.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.bottom).offset(20)
+            make.width.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(addTaskButton.snp.top).offset(-20)
+        }
+        backgroundImage.snp.makeConstraints { make in
+            make.leading.equalTo(0)
+            make.trailing.equalTo(0)
+            make.top.equalTo(0)
+            make.bottom.equalTo(0)
+        }
     }
 }

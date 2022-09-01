@@ -32,11 +32,11 @@ class AddTaskVC: UIViewController {
 
     @objc private func toTaskViewWithData() {
         let title = returnTitle()
-        guard !tasksArray.checkTaskInMemory(title: title) else {return uncorectTitle()}
+        guard !LocaleStore.shared.tasksArray.checkTaskInMemory(title: title) else {return uncorectTitle()}
         let description = returnDiscription()
         let startTime = datePickerStart()
         let deadLine = datePickerData()
-        tasksArray.appendNewTask(title: title, description: description, start: startTime, end: deadLine)
+        LocaleStore.shared.tasksArray.appendNewTask(title: title, description: description, start: startTime, end: deadLine)
         dismiss(animated: true)
     }
 

@@ -89,6 +89,12 @@ class CreateView: UIView {
 
     private func setConstraintsViews() {
         NSLayoutConstraint.activate([
+            // переделать констрейнты// стыдоба
+            // переделать констрейнты// стыдоба
+            // переделать констрейнты// стыдоба
+            // переделать констрейнты// стыдоба
+            // переделать констрейнты// стыдоба
+            // переделать констрейнты// стыдоба
         nameLabel.heightAnchor.constraint(equalToConstant: 20),
         nameLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -515),
         nameLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 65),

@@ -20,6 +20,9 @@ class TasksVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // скрыть кнопку back
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.title = "Tasks"
         tasksView.tableViewTasks.dataSource = self
         tasksView.tableViewTasks.delegate = self
         toTaskView(self, action: #selector(toAddTaskView))
@@ -29,7 +32,7 @@ class TasksVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tasksArray.getReadyTasks()
+        LocaleStore.shared.tasksArray.getReadyTasks()
         tasksView.tableViewTasks.reloadData()
     }
 
@@ -40,6 +43,10 @@ class TasksVC: UIViewController {
     }
 
     @objc private func changeTasks(_ segmentedControl: UISegmentedControl) {
+        tasksView.tableViewTasks.reloadData()
+    }
+
+    func reloadTableView() {
         tasksView.tableViewTasks.reloadData()
     }
 
@@ -61,8 +68,8 @@ class TasksVC: UIViewController {
 
     func doneAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Done") { (_, _, _) in
-            tasksArray.arrayTasks[indexPath.row].changeStatus()
-            tasksArray.getReadyTasks()
+            LocaleStore.shared.tasksArray.arrayTasks[indexPath.row].changeStatus()
+            LocaleStore.shared.tasksArray.getReadyTasks()
             self.tasksView.tableViewTasks.reloadData()
         }
         action.backgroundColor = .lightText
@@ -72,8 +79,8 @@ class TasksVC: UIViewController {
 
     func inProgressAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "In Progress") { (_, _, _) in
-            tasksArray.readyTasks[indexPath.row].changeStatusFalse()
-            tasksArray.getInProgressTasks()
+            LocaleStore.shared.tasksArray.readyTasks[indexPath.row].changeStatusFalse()
+            LocaleStore.shared.tasksArray.getInProgressTasks()
             self.tasksView.tableViewTasks.reloadData()
         }
         action.backgroundColor = .orange
@@ -87,9 +94,9 @@ extension TasksVC: UITableViewDataSource {
         let segmentedControlIndex = tasksView.segmentedControl.selectedSegmentIndex
         switch segmentedControlIndex {
         case 0:
-            return tasksArray.readyTasks.count
+            return LocaleStore.shared.tasksArray.readyTasks.count
         case 1:
-            return tasksArray.arrayTasks.count
+            return LocaleStore.shared.tasksArray.arrayTasks.count
         default: return 0
         }
     }
@@ -102,14 +109,14 @@ extension TasksVC: UITableViewDataSource {
         let segmentedControlIndex = tasksView.segmentedControl.selectedSegmentIndex
         switch segmentedControlIndex {
         case 0:
-            cell.titleLable.text = tasksArray.readyTasks[indexPath.row].title
+            cell.titleLable.text = LocaleStore.shared.tasksArray.readyTasks[indexPath.row].title
             cell.timeLabel.isHidden = true
             cell.imageCell.image = UIImage(named: "done")
             return cell
         case 1:
-            let date = tasksArray.arrayTasks[indexPath.row].deadLine?.formatted(date: .abbreviated, time: .shortened)
+            let date = LocaleStore.shared.tasksArray.arrayTasks[indexPath.row].deadLine?.formatted(date: .abbreviated, time: .shortened)
             cell.timeLabel.text = date
-            cell.titleLable.text = tasksArray.arrayTasks[indexPath.row].title
+            cell.titleLable.text = LocaleStore.shared.tasksArray.arrayTasks[indexPath.row].title
             cell.imageCell.image = UIImage(named: "")
             cell.timeLabel.isHidden = false
             return cell
@@ -138,9 +145,9 @@ extension TasksVC: UITableViewDataSource {
         let segmentedControlIndex = self.tasksView.segmentedControl.selectedSegmentIndex
         switch segmentedControlIndex {
         case 0:
-            tasksArray.readyTasks.remove(at: indexPath.row)
+            LocaleStore.shared.tasksArray.readyTasks.remove(at: indexPath.row)
         case 1:
-            tasksArray.arrayTasks.remove(at: indexPath.row)
+            LocaleStore.shared.tasksArray.arrayTasks.remove(at: indexPath.row)
         default:
             break
         }
@@ -154,23 +161,23 @@ extension TasksVC: UITableViewDelegate {
         let segmentedControlIndex = tasksView.segmentedControl.selectedSegmentIndex
         switch segmentedControlIndex {
         case 0:
-            let title = tasksArray.readyTasks[indexPath.row].title
-            let description = tasksArray.readyTasks[indexPath.row].description
-            let startTime = tasksArray.readyTasks[indexPath.row].startTime
-            let endTime = tasksArray.readyTasks[indexPath.row].deadLine
+            let title = LocaleStore.shared.tasksArray.readyTasks[indexPath.row].title
+            let description = LocaleStore.shared.tasksArray.readyTasks[indexPath.row].description
+            let startTime = LocaleStore.shared.tasksArray.readyTasks[indexPath.row].startTime
+            let endTime = LocaleStore.shared.tasksArray.readyTasks[indexPath.row].deadLine
             let controller = InfoTaskVC()
             controller.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
             controller.buttonOff()
-            controller.modalPresentationStyle = .fullScreen
+//            controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true)
         case 1:
-            let title = tasksArray.arrayTasks[indexPath.row].title
-            let description = tasksArray.arrayTasks[indexPath.row].description
-            let startTime = tasksArray.arrayTasks[indexPath.row].startTime
-            let endTime = tasksArray.arrayTasks[indexPath.row].deadLine
+            let title = LocaleStore.shared.tasksArray.arrayTasks[indexPath.row].title
+            let description = LocaleStore.shared.tasksArray.arrayTasks[indexPath.row].description
+            let startTime = LocaleStore.shared.tasksArray.arrayTasks[indexPath.row].startTime
+            let endTime = LocaleStore.shared.tasksArray.arrayTasks[indexPath.row].deadLine
             let controller = InfoTaskVC()
             controller.setInfo(title: title, description: description, index: indexPath.row, start: startTime, end: endTime)
-            controller.modalPresentationStyle = .fullScreen
+//            controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true)
         default:
             break

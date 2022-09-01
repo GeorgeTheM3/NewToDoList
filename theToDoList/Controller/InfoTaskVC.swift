@@ -28,23 +28,24 @@ class InfoTaskVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton(self, action: #selector(toTasksView))
-        deleteButton(self, action: #selector(deleteToTasksView))
-        doneButton(self, action: #selector(doneTasksButton))
+        backButton(self, action: #selector(backButtonAction))
+        deleteButton(self, action: #selector(deleteTaskButtonAction))
+        doneButton(self, action: #selector(doneTasksButtonAction))
         setViewWithContent(title: titleTask, description: descriptionTask, start: startTime, end: endTime)
     }
 
-    @objc private func toTasksView() {
+    @objc private func backButtonAction() {
         dismiss(animated: true)
     }
 
-    @objc private func deleteToTasksView() {
-        tasksArray.removeTask(title: titleTask)
+    @objc private func deleteTaskButtonAction() {
+        LocaleStore.shared.tasksArray.removeTask(title: titleTask)
+        let lastCont = navigationController?.viewControllers.last
         dismiss(animated: true)
     }
 
-    @objc private func doneTasksButton() {
-        tasksArray.arrayTasks[indexOfTask].changeStatus()
+    @objc private func doneTasksButtonAction() {
+        LocaleStore.shared.tasksArray.arrayTasks[indexOfTask].changeStatus()
         dismiss(animated: true)
     }
 

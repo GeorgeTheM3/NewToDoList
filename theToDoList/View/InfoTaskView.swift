@@ -135,7 +135,7 @@ class InfoTaskView: UIView {
     }
     private func backButtonConstraints() {
         backButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(15)
             make.width.equalTo(60)
             make.trailing.equalTo(-15)
         }
@@ -157,7 +157,7 @@ class InfoTaskView: UIView {
     }
     private func titleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(90)
+            make.top.equalTo(backButton.snp.bottom).offset(10)
             make.leading.equalTo(30)
             make.trailing.equalTo(deleteButton.snp.leading).offset(-10)
             make.height.equalTo(40)
@@ -165,7 +165,7 @@ class InfoTaskView: UIView {
     }
     private func descriptionViewConstraints() {
         descriptionView.snp.makeConstraints { make in
-            make.top.equalTo(150)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
             make.height.equalTo(494)

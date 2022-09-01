@@ -20,7 +20,6 @@ class SignInVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        signUpButtonTarget(self, action: #selector(goToSignUpView))
         signInButtonTarget(self, action: #selector(checkUser))
         forgetButtonTarget(self, action: #selector(forgetPassword))
     }
@@ -48,7 +47,7 @@ class SignInVC: UIViewController {
 
     @objc private func checkUser() {
         getUserNameAndPassword()
-        let result = users.chechUserPassword(name: userName, password: userPassword)
+        let result = LocaleStore.shared.users.chechUserPassword(name: userName, password: userPassword)
         if result {
             goToTasks()
         } else {
@@ -66,7 +65,7 @@ class SignInVC: UIViewController {
         let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
             self.userName = alertController.textFields![0].text
             guard self.userName != nil else { return }
-            let password = users.returnPassword(name: self.userName!)
+            let password = LocaleStore.shared.users.returnPassword(name: self.userName!)
             let controller = UIAlertController(title: "Your password", message: "\(password)", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default)
             controller.addAction(okAction)
@@ -85,12 +84,12 @@ class SignInVC: UIViewController {
     }
 
     private func getName() -> String {
-        guard let text = signInView.textFieldName.text else { return "password is empty"}
+        guard let text = signInView.enterYourNameTaxtField.text else { return "password is empty"}
         return text
     }
 
     private func getPassword() -> String {
-        guard let text = signInView.textFieldPassword.text else { return "password is empty"}
+        guard let text = signInView.enterYourPaswordTextField.text else { return "password is empty"}
         return text
     }
 

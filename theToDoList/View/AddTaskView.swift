@@ -135,8 +135,8 @@ class AddTaskView: UIView {
     }
     private func backButtonConstraints() {
         closeButton.snp.makeConstraints { make in
-            make.top.equalTo(50)
-            make.leading.equalTo(15)
+            make.top.equalTo(safeAreaLayoutGuide).offset(15)
+            make.trailing.equalTo(textfieldTitle.snp.trailing)
             make.width.equalTo(70)
         }
     }

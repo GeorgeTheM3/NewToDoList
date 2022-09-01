@@ -39,11 +39,11 @@ class CreateVC: UIViewController {
     }
 
     private func checkUser() {
-        let result = users.checkUserInMemory(name: userName)
+        let result = LocaleStore.shared.users.checkUserInMemory(name: userName)
         if result {
             errorUser()
         } else {
-            users.appendNewUser(name: userName, password: userPassword)
+            LocaleStore.shared.users.appendNewUser(name: userName, password: userPassword)
             goToTasks()
         }
     }
